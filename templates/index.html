@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Scheme Finder - Automated Welfare and Scholarship Eligibility Engine for Andhra Pradesh, Telangana, Tamil Nadu, and Central Government schemes." />
+  <title>Scheme Finder | Welfare &amp; Scholarship Eligibility Engine</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/static/css/index.css" />
+  <link rel="stylesheet" href="/static/css/components.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand" id="brandLink">
+        <div class="brand-icon">🏛️</div>
+        <div class="brand-info">
+          <span class="brand-title">Scheme Finder</span>
+          <span class="brand-subtitle">Welfare &amp; Scholarship Eligibility</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#finderSection" class="nav-link active" id="navCheckEligibility">Check Eligibility</a>
+        <a href="#exploreSection" class="nav-link" id="navExploreSchemes">Browse Directory</a>
+        <a href="#aboutSection" class="nav-link" id="navAboutProject">About</a>
+        <a href="#settings" class="nav-link" id="navSettingsLink">Settings</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button type="button" class="nav-avatar-btn" id="navAvatarBtn" aria-label="Account and Profile Settings" title="Account & Profile Settings">
+          <span id="navAvatarInitials">AS</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="container">
+        <!-- State tags row -->
+        <div class="hero-state-tags">
+          <span class="hero-state-tag">Andhra Pradesh</span>
+          <span class="hero-state-tag sep">•</span>
+          <span class="hero-state-tag">Telangana</span>
+          <span class="hero-state-tag sep">•</span>
+          <span class="hero-state-tag">Tamil Nadu</span>
+          <span class="hero-state-tag sep">•</span>
+          <span class="hero-state-tag">Central</span>
+        </div>
+
+        <h1 class="hero-title">
+          Identify the welfare schemes and<br>scholarships you are eligible for.
+        </h1>
+        <p class="hero-desc">
+          Answer three short sections. Each result states the exact rules you satisfy and the documents you will need to apply.
+        </p>
+
+        <!-- 1-Click Test Presets -->
+        <div class="quick-fill-bar">
+          <span class="quick-fill-label">Try a sample profile:</span>
+          <button type="button" class="preset-chip" data-preset="ap_student" id="presetAp">Andhra Pradesh student</button>
+          <button type="button" class="preset-chip" data-preset="ts_student" id="presetTs">Telangana student</button>
+          <button type="button" class="preset-chip" data-preset="tn_student" id="presetTn">Tamil Nadu student</button>
+          <button type="button" class="preset-chip" data-preset="central_scholar" id="presetCentral">Central scholar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRESS BAR ===== -->
+    <div class="form-progress-bar-wrap">
+      <div class="container">
+        <div class="form-progress-inner">
+          <span class="progress-label">Progress: 2 of 3 sections complete</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="formProgressFill" style="width:66%;"></div>
+          </div>
+          <span class="required-note"><span class="req-star">*</span> Required fields</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT: Form + Sidebar ===== -->
+    <section class="container" id="finderSection">
+      <div class="main-layout">
+
+        <!-- === LEFT: FORM COLUMN === -->
+        <div class="form-column">
+          <form id="profileForm" novalidate>
+
+            <!-- Section 1: Residence & Household -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <div class="section-number">1</div>
+                <span class="section-title">Residence and household</span>
+              </div>
+              <div class="form-section-body">
+                <div class="form-grid" style="grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));">
+
+                  <!-- State -->
+                  <div class="form-group">
+                    <label for="stateSelect" class="form-label">
+                      State of domicile <span class="req-star">*</span>
+                      <span class="label-hint">Determines state schemes</span>
+                    </label>
+                    <select id="stateSelect" name="state" class="input-control" required>
+                      <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Pan-India">Other / Pan-India</option>
+                    </select>
+                  </div>
+
+                  <!-- Income -->
+                  <div class="form-group">
+                    <label for="incomeInput" class="form-label">
+                      Annual family income (₹) <span class="req-star">*</span>
+                      <span class="label-hint">Digits only, for example 250000</span>
+                    </label>
+                    <input
+                      type="number"
+                      id="incomeInput"
+                      name="income"
+                      class="input-control"
+                      placeholder="e.g. 200000"
+                      value="200000"
+                      min="0"
+                      step="5000"
+                      required
+                    />
+                    <div class="quick-inputs-row">
+                      <button type="button" class="quick-btn quick-income-btn" data-val="150000">₹1.5L</button>
+                      <button type="button" class="quick-btn quick-income-btn" data-val="250000">₹2.5L</button>
+                      <button type="button" class="quick-btn quick-income-btn" data-val="500000">₹5.0L</button>
+                      <button type="button" class="quick-btn quick-income-btn" data-val="800000">₹8.0L</button>
+                    </div>
+                    <div class="input-suffix-note">Used at ₹2,00,000 (test limit ₹4,00,000)</div>
+                  </div>
+
+                  <!-- Category -->
+                  <div class="form-group">
+                    <label for="categorySelect" class="form-label">
+                      Social category <span class="req-star">*</span>
+                      <span class="label-hint">As per community certificate</span>
+                    </label>
+                    <select id="categorySelect" name="category" class="input-control" required>
+                      <option value="General">General / Open</option>
+                      <option value="OBC" selected>OBC / BC (Backward Classes)</option>
+                      <option value="SC">SC (Scheduled Caste)</option>
+                      <option value="ST">ST (Scheduled Tribe)</option>
+                      <option value="EWS">EWS (Economically Weaker Section)</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Education -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <div class="section-number">2</div>
+                <span class="section-title">Education</span>
+              </div>
+              <div class="form-section-body">
+                <div class="form-grid" style="grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));">
+
+                  <!-- Course Level -->
+                  <div class="form-group">
+                    <label for="courseSelect" class="form-label">
+                      Current level <span class="req-star">*</span>
+                      <span class="label-hint">Course you are enrolled in</span>
+                    </label>
+                    <select id="courseSelect" name="course_level" class="input-control" required>
+                      <option value="UG" selected>Undergraduate (UG)</option>
+                      <option value="PG">Postgraduate (PG)</option>
+                      <option value="Diploma">Polytechnic / Diploma</option>
+                      <option value="Class 12">Class 12 (Higher Secondary)</option>
+                      <option value="Class 10">Class 10 (Secondary)</option>
+                      <option value="PhD">Ph.D. / Research</option>
+                    </select>
+                  </div>
+
+                  <!-- Gender -->
+                  <div class="form-group">
+                    <label class="form-label">
+                      Gender <span class="req-star">*</span>
+                    </label>
+                    <div class="radio-group-cards">
+                      <label class="radio-card">
+                        <input type="radio" name="gender" value="Female" id="genderFemale" />
+                        <span class="radio-card-content">Female</span>
+                      </label>
+                      <label class="radio-card">
+                        <input type="radio" name="gender" value="Male" id="genderMale" checked />
+                        <span class="radio-card-content">Male</span>
+                      </label>
+                      <label class="radio-card">
+                        <input type="radio" name="gender" value="Other" id="genderOther" />
+                        <span class="radio-card-content">Other</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Marks -->
+                  <div class="form-group">
+                    <label for="marksInput" class="form-label">
+                      Academic marks (%) <span class="req-star">*</span>
+                      <span class="label-hint">Between 0 and 100</span>
+                    </label>
+                    <input
+                      type="number"
+                      id="marksInput"
+                      name="marks"
+                      class="input-control"
+                      placeholder="e.g. 85"
+                      value="85"
+                      min="0"
+                      max="100"
+                      step="0.5"
+                      required
+                    />
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Special Circumstances -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <div class="section-number">3</div>
+                <span class="section-title">Special circumstances</span>
+                <span class="section-opt-tag">(select all that apply)</span>
+              </div>
+              <div class="form-section-body">
+                <div class="checkbox-grid">
+                  <label class="checkbox-label" for="firstGraduateCheck">
+                    <input type="checkbox" id="firstGraduateCheck" name="is_first_graduate" />
+                    <span>
+                      First graduate in family
+                      <span class="checkbox-sublabel">Tamil Nadu &amp; Central schemes</span>
+                    </span>
+                  </label>
+                  <label class="checkbox-label" for="govtSchoolCheck">
+                    <input type="checkbox" id="govtSchoolCheck" name="is_govt_school" />
+                    <span>
+                      Studied in a government school
+                      <span class="checkbox-sublabel">Classes 6–12, Pudhumai Penn quota</span>
+                    </span>
+                  </label>
+                  <label class="checkbox-label" for="farmerCheck">
+                    <input type="checkbox" id="farmerCheck" name="is_farmer" />
+                    <span>
+                      Farming household
+                      <span class="checkbox-sublabel">Rythu Bharosa / Bandhu</span>
+                    </span>
+                  </label>
+                  <label class="checkbox-label" for="singleGirlCheck">
+                    <input type="checkbox" id="singleGirlCheck" name="is_single_girl_child" />
+                    <span>
+                      Single girl child
+                      <span class="checkbox-sublabel">Pragati Scheme</span>
+                    </span>
+                  </label>
+                  <label class="checkbox-label" for="disabledCheck">
+                    <input type="checkbox" id="disabledCheck" name="is_disabled" />
+                    <span>
+                      Person with disability (40% or more)
+                      <span class="checkbox-sublabel">Concessions &amp; deductions</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Row -->
+            <div class="form-submit-row">
+              <span class="privacy-note">🔒 Your details are evaluated on this device only</span>
+              <div style="display:flex;gap:0.6rem;align-items:center;">
+                <button type="button" class="btn btn-ghost btn-sm" id="clearFormBtn">Clear</button>
+                <button type="submit" class="btn btn-primary" id="findSchemesBtn">
+                  Find eligible schemes
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- Next Steps Strip -->
+          <div class="next-steps-strip">
+            <div class="next-step-item">
+              <span class="step-num">Step 1</span>
+              <span class="step-text">Review your matched schemes</span>
+            </div>
+            <div class="next-step-item">
+              <span class="step-num">Step 2</span>
+              <span class="step-text">Tick off the documents you hold</span>
+            </div>
+            <div class="next-step-item">
+              <span class="step-num">Step 3</span>
+              <span class="step-text">Apply on the official portal</span>
+            </div>
+          </div>
+
+        </div><!-- /form-column -->
+
+        <!-- === RIGHT: PROFILE SIDEBAR === -->
+        <aside class="profile-sidebar">
+          <div class="sidebar-card">
+            <div class="sidebar-header">
+              <span class="sidebar-title">Your profile</span>
+              <span class="sidebar-edit-link" id="sidebarEditLink">Edit details</span>
+            </div>
+            <div class="sidebar-body">
+              <div class="sidebar-row">
+                <span class="sidebar-key">State</span>
+                <span class="sidebar-val" id="sidebarState">Andhra Pradesh</span>
+              </div>
+              <div class="sidebar-row">
+                <span class="sidebar-key">Income</span>
+                <span class="sidebar-val" id="sidebarIncome">₹2,00,000</span>
+              </div>
+              <div class="sidebar-row">
+                <span class="sidebar-key">Category</span>
+                <span class="sidebar-val" id="sidebarCategory">OBC / BC</span>
+              </div>
+              <div class="sidebar-row">
+                <span class="sidebar-key">Level</span>
+                <span class="sidebar-val" id="sidebarLevel">Undergraduate</span>
+              </div>
+              <div class="sidebar-row">
+                <span class="sidebar-key">Circumstances</span>
+                <span class="sidebar-val" id="sidebarCircumstances">None selected</span>
+              </div>
+
+              <div class="sidebar-note" id="sidebarNote">
+                <strong>Note:</strong> Results are indicative. Final eligibility is decided by the issuing department.
+              </div>
+            </div>
+          </div>
+        </aside><!-- /profile-sidebar -->
+
+      </div><!-- /main-layout -->
+    </section>
+
+    <!-- ===== RESULTS SECTION ===== -->
+    <section class="container results-section" id="resultsSection" style="display:none;">
+      <div class="results-header">
+        <div class="results-title-group">
+          <h2 class="results-main-title" id="resultsTitle">matches your profile</h2>
+          <span class="results-count-pill" id="eligibleCountBadge">—</span>
+        </div>
+        <p class="results-sub">Ranked by how fully your profile meets each scheme's rules.</p>
+      </div>
+
+      <!-- Filter chips -->
+      <div class="results-filter-bar" id="resultsFilterBar">
+        <button type="button" class="result-filter-chip active" data-cat="All">All</button>
+        <button type="button" class="result-filter-chip" data-cat="Education">Education</button>
+        <button type="button" class="result-filter-chip" data-cat="Women Empowerment">Women</button>
+        <button type="button" class="result-filter-chip" data-cat="Healthcare">Health</button>
+        <button type="button" class="result-filter-chip" data-cat="Agriculture">Agriculture</button>
+        <div class="sort-label">
+          Sort by:
+          <select id="resultsSortSelect">
+            <option value="best_match">Best match</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- No matches notice -->
+      <div id="noMatchesNotice" class="no-matches-notice" style="display:none;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🔍</div>
+        <h3 style="font-size:1.15rem;margin-bottom:0.4rem;">No direct matches found</h3>
+        <p style="color:var(--text-secondary);max-width:440px;margin:0 auto 1.25rem;font-size:0.85rem;">
+          Try adjusting your income range, course level, or browse all schemes below.
+        </p>
+        <a href="#exploreSection" class="btn btn-secondary btn-sm">Browse all available schemes</a>
+      </div>
+
+      <!-- Matched scheme cards -->
+      <div class="schemes-list" id="schemesResultsContainer">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- ===== EXPLORE DIRECTORY ===== -->
+    <section class="explore-section" id="exploreSection">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-info" style="margin-bottom:0.4rem;">Verified Database Catalog</span>
+          <h2>Browse All Schemes &amp; Guidelines</h2>
+          <p>Filterable by State and Category — Central &amp; State welfare programs.</p>
+        </div>
+
+        <!-- State tabs -->
+        <div class="state-tabs-row" id="stateTabsContainer">
+          <button type="button" class="state-tab-btn active" data-state="All">🌐 All Schemes (23)</button>
+          <button type="button" class="state-tab-btn" data-state="Andhra Pradesh">🟡 Andhra Pradesh (6)</button>
+          <button type="button" class="state-tab-btn" data-state="Telangana">🔵 Telangana (6)</button>
+          <button type="button" class="state-tab-btn" data-state="Tamil Nadu">🔴 Tamil Nadu (6)</button>
+          <button type="button" class="state-tab-btn" data-state="All India">🇮🇳 Central / All-India (5)</button>
+        </div>
+
+        <!-- Search & Category Filter -->
+        <div class="explore-controls">
+          <div class="search-box">
+            <span class="search-icon">🔎</span>
+            <input type="text" id="exploreSearchInput" class="search-input" placeholder="Search by scheme name, state, department..." />
+          </div>
+          <div class="category-filter-chips">
+            <button type="button" class="filter-chip active" data-cat="All">All</button>
+            <button type="button" class="filter-chip" data-cat="Education">🎓 Education</button>
+            <button type="button" class="filter-chip" data-cat="Women Empowerment">👩 Women</button>
+            <button type="button" class="filter-chip" data-cat="Healthcare">🏥 Health</button>
+            <button type="button" class="filter-chip" data-cat="Agriculture">🌾 Agriculture</button>
+            <button type="button" class="filter-chip" data-cat="Social Welfare">🤝 Social Welfare</button>
+          </div>
+        </div>
+
+        <!-- Grid -->
+        <div id="exploreGrid">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="aboutSection">
+      <div class="container">
+        <div class="about-card surface-card" style="background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:2rem;">
+          <span class="badge badge-info" style="margin-bottom:0.5rem;">Architecture Overview</span>
+          <h2 style="font-size:1.25rem;margin-bottom:0.6rem;">About Scheme Finder</h2>
+          <p style="color:var(--text-secondary);line-height:1.7;font-size:0.875rem;max-width:700px;">
+            <strong>Scheme Finder</strong> is a deterministic welfare and scholarship eligibility engine. Citizens and students enter their attributes once. The Boolean rule engine calculates matches, displays transparent explanations (<em>"Why You Qualify"</em>), and auto-generates document preparation checklists — without any opaque AI hallucinations.
+          </p>
+          <div class="about-grid">
+            <div>
+              <div class="about-meta-key">States Covered</div>
+              <div class="about-meta-val">Andhra Pradesh, Telangana, Tamil Nadu &amp; All-India</div>
+            </div>
+            <div>
+              <div class="about-meta-key">Core Engine</div>
+              <div class="about-meta-val">Deterministic Boolean Threshold Matcher</div>
+            </div>
+            <div>
+              <div class="about-meta-key">Key Portals</div>
+              <div class="about-meta-val" style="font-size:0.82rem;">JnanaBhumi AP · TS ePASS · Pudhumai Penn TN · NSP Central</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== DOCUMENT CHECKLIST DIALOG ===== -->
+  <dialog id="checklistDialog" aria-labelledby="modalSchemeTitle" aria-modal="true">
+    <div class="modal-header">
+      <div>
+        <span class="badge badge-info" style="margin-bottom:0.2rem;">Document Checklist</span>
+        <h3 class="modal-title" id="modalSchemeTitle">Scheme Document Checklist</h3>
+      </div>
+      <button type="button" class="modal-close-btn" id="closeDialogBtn" aria-label="Close dialog">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="checklist-progress-container">
+        <div class="checklist-progress-text">
+          <span>Documents Prepared</span>
+          <span id="progressStatusText">0 of 0 ready (0%)</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressBarFill" style="width:0%;"></div>
+        </div>
+      </div>
+
+      <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1rem;">
+        Tick off each document as you collect them before visiting a Meeseva / e-Sevai / CSC centre:
+      </p>
+
+      <div class="document-items-list" id="documentItemsContainer">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary btn-sm" id="printChecklistBtn">
+        🖨️ Print / Save Checklist
+      </button>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="modalOfficialLink">
+        Go to Official Portal →
+      </a>
+    </div>
+  </dialog>
+
+  <!-- ===== ACCOUNT & PROFILE SETTINGS DIALOG ===== -->
+  <dialog id="settingsDialog" aria-labelledby="settingsDialogTitle" aria-modal="true">
+    <div class="settings-dialog-header">
+      <div style="display:flex;align-items:center;gap:0.6rem;">
+        <span style="font-size:1.2rem;">⚙️</span>
+        <h3 class="settings-dialog-title" id="settingsDialogTitle">Account &amp; Profile Settings</h3>
+      </div>
+      <button type="button" class="modal-close-btn" id="closeSettingsDialogBtn" aria-label="Close settings dialog">&times;</button>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="settings-tab-strip" role="tablist">
+      <button type="button" class="settings-tab-btn active" id="tabBtnProfile" data-tab="tabProfile" role="tab" aria-selected="true">
+        <span>👤</span> Profile Settings
+      </button>
+      <button type="button" class="settings-tab-btn" id="tabBtnAccount" data-tab="tabAccount" role="tab" aria-selected="false">
+        <span>⚙️</span> Account Settings
+      </button>
+    </div>
+
+    <div class="settings-dialog-body">
+      <!-- TAB 1: PROFILE SETTINGS -->
+      <div class="settings-tab-panel active" id="tabProfile" role="tabpanel">
+        <!-- User Avatar Row -->
+        <div class="settings-avatar-row">
+          <div class="settings-avatar-big" id="settingsAvatarBig">AS</div>
+          <div class="settings-avatar-info">
+            <div class="settings-user-name" id="settingsUserNameDisplay">Ananya Sharma</div>
+            <div class="settings-user-email" id="settingsUserEmailDisplay">ananya.sharma@example.com</div>
+            <div class="settings-user-since" id="settingsUserSubtitle">Citizen Profile · Local Session</div>
+          </div>
+        </div>
+
+        <form id="settingsProfileForm" novalidate>
+          <div class="settings-section-title">Personal Identification</div>
+          <div class="settings-form-grid">
+            <div class="settings-field">
+              <label class="settings-label" for="settingFullName">Full Name</label>
+              <input type="text" id="settingFullName" class="settings-input" placeholder="e.g. Ananya Sharma" value="Ananya Sharma" />
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingEmail">Email Address</label>
+              <input type="email" id="settingEmail" class="settings-input" placeholder="e.g. ananya.sharma@example.com" value="ananya.sharma@example.com" />
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingPhone">Mobile Phone</label>
+              <input type="tel" id="settingPhone" class="settings-input" placeholder="e.g. +91 98765 43210" value="+91 98765 43210" />
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingDob">Date of Birth</label>
+              <input type="date" id="settingDob" class="settings-input" value="2003-05-14" />
+            </div>
+          </div>
+
+          <div class="settings-section-title">Eligibility Criteria Defaults (Syncs with Finder)</div>
+          <div class="settings-form-grid">
+            <div class="settings-field">
+              <label class="settings-label" for="settingState">State of Domicile</label>
+              <select id="settingState" class="settings-input">
+                <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Pan-India">Other / Pan-India</option>
+              </select>
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingIncome">Annual Family Income (₹)</label>
+              <input type="number" id="settingIncome" class="settings-input" placeholder="e.g. 200000" value="200000" min="0" step="5000" />
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingCategory">Social Category</label>
+              <select id="settingCategory" class="settings-input">
+                <option value="General">General / Open</option>
+                <option value="OBC" selected>OBC / BC (Backward Classes)</option>
+                <option value="SC">SC (Scheduled Caste)</option>
+                <option value="ST">ST (Scheduled Tribe)</option>
+                <option value="EWS">EWS (Economically Weaker Section)</option>
+              </select>
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingCourse">Education Level</label>
+              <select id="settingCourse" class="settings-input">
+                <option value="UG" selected>Undergraduate (UG)</option>
+                <option value="PG">Postgraduate (PG)</option>
+                <option value="Diploma">Polytechnic / Diploma</option>
+                <option value="Class 12">Class 12 (Higher Secondary)</option>
+                <option value="Class 10">Class 10 (Secondary)</option>
+                <option value="PhD">Ph.D. / Research</option>
+              </select>
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingMarks">Academic Marks (%)</label>
+              <input type="number" id="settingMarks" class="settings-input" placeholder="e.g. 85" value="85" min="0" max="100" step="0.5" />
+            </div>
+            <div class="settings-field">
+              <label class="settings-label" for="settingGender">Gender</label>
+              <select id="settingGender" class="settings-input">
+                <option value="Female">Female</option>
+                <option value="Male" selected>Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-section-title">Special Circumstances &amp; Quotas</div>
+          <div class="settings-form-grid">
+            <div class="settings-field full-span">
+              <div style="display:flex;flex-direction:column;gap:0.55rem;">
+                <label class="checkbox-label" for="settingFirstGraduate">
+                  <input type="checkbox" id="settingFirstGraduate" />
+                  <span>First graduate in family (Tamil Nadu &amp; Central schemes)</span>
+                </label>
+                <label class="checkbox-label" for="settingGovtSchool">
+                  <input type="checkbox" id="settingGovtSchool" />
+                  <span>Studied in government school (Classes 6–12, Pudhumai Penn quota)</span>
+                </label>
+                <label class="checkbox-label" for="settingFarmer">
+                  <input type="checkbox" id="settingFarmer" />
+                  <span>Agricultural or tenant farming household (Rythu Bharosa / PM-KISAN)</span>
+                </label>
+                <label class="checkbox-label" for="settingSingleGirl">
+                  <input type="checkbox" id="settingSingleGirl" />
+                  <span>Single girl child in family</span>
+                </label>
+                <label class="checkbox-label" for="settingDisabled">
+                  <input type="checkbox" id="settingDisabled" />
+                  <span>Person with Disability (PwD &ge;40%)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border-subtle);">
+            <button type="button" class="btn btn-primary btn-sm" id="saveProfileBtn">
+              💾 Save Profile
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="applyProfileToFormBtn">
+              📋 Sync to Form &amp; Re-evaluate
+            </button>
+            <button type="button" class="btn btn-ghost btn-sm" id="resetProfileBtn">
+              ↺ Reset to Defaults
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TAB 2: ACCOUNT SETTINGS -->
+      <div class="settings-tab-panel" id="tabAccount" role="tabpanel">
+        <div class="settings-section-title">Appearance &amp; Interface</div>
+        
+        <div class="settings-toggle-row">
+          <div class="settings-toggle-info">
+            <span class="settings-toggle-label">Dark Theme</span>
+            <span class="settings-toggle-desc">Toggle sleek dark mode color scheme</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settingDarkToggle" />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <div class="settings-toggle-row">
+          <div class="settings-toggle-info">
+            <span class="settings-toggle-label">Auto-Evaluate Eligibility</span>
+            <span class="settings-toggle-desc">Automatically recalculate matching schemes when input changes</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settingAutoEvalToggle" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <div class="settings-toggle-row">
+          <div class="settings-toggle-info">
+            <span class="settings-toggle-label">Compact Scheme Cards</span>
+            <span class="settings-toggle-desc">Dense list view for streamlined browsing of results</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settingCompactToggle" />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <div class="settings-section-title" style="margin-top:1.25rem;">Notifications &amp; Reminders</div>
+
+        <div class="settings-toggle-row">
+          <div class="settings-toggle-info">
+            <span class="settings-toggle-label">Application Deadline Reminders</span>
+            <span class="settings-toggle-desc">Display active notices for upcoming scholarship deadlines</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settingDeadlineAlerts" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <div class="settings-toggle-row">
+          <div class="settings-toggle-info">
+            <span class="settings-toggle-label">New Welfare Scheme Alerts</span>
+            <span class="settings-toggle-desc">Highlight newly added State &amp; Central welfare initiatives</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settingNewSchemesAlert" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <div class="settings-toggle-row">
+          <div class="settings-toggle-info">
+            <span class="settings-toggle-label">Persistent Document Checklist</span>
+            <span class="settings-toggle-desc">Save your checked document verification states across visits</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settingAutoSaveChecklist" checked />
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+
+        <div class="settings-section-title" style="margin-top:1.25rem;display:flex;justify-content:space-between;align-items:center;">
+          <span>Saved &amp; Bookmarked Schemes</span>
+          <span class="badge badge-info" id="savedSchemesCount">0 saved</span>
+        </div>
+        <div id="savedSchemesContainer">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <div class="settings-section-title" style="margin-top:1.25rem;">Data, Backup &amp; Privacy</div>
+        <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.85rem;line-height:1.5;">
+          🔒 <strong>100% Client-Side Privacy:</strong> All your profile information, preferences, and checklist states are stored purely in your browser's local storage. No data is stored on remote cloud databases.
+        </p>
+
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button type="button" class="btn btn-secondary btn-sm" id="exportDataBtn">
+            📥 Export Profile &amp; Data (JSON)
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" id="clearAllDataBtn" style="color:var(--accent-red);border-color:rgba(220,38,38,0.3);">
+            🗑️ Clear All Saved Data
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-dialog-footer">
+      <span class="settings-save-note" id="settingsSaveStatus">All settings save locally in your browser</span>
+      <div style="display:flex;gap:0.5rem;">
+        <button type="button" class="btn btn-secondary btn-sm" id="closeSettingsFooterBtn">Done</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== FLOATING TOAST NOTIFICATION ===== -->
+  <div id="toastNotification" class="toast-notification" role="status" aria-live="polite"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <div class="affiliation-title">Scheme Finder | Automated Welfare Engine</div>
+        <div class="affiliation-meta">Andhra Pradesh · Telangana · Tamil Nadu · Central Government Schemes</div>
+      </div>
+      <div style="font-size:0.78rem;color:var(--text-muted);text-align:right;">
+        <div>100% Privacy Preserving · Instant Local Verification</div>
+        <div style="margin-top:0.2rem;">Minor Project-I · Vel Tech R&amp;D · Batch 1358</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
