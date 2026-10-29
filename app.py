@@ -128,5 +128,5 @@ def get_scheme_detail(scheme_id):
 if __name__ == "__main__":
     # Standard development server port
     port = int(os.environ.get("PORT", 5000))
-    print(f"Scheme Finder server running at http://127.0.0.1:{port}")
-    app.run(host="127.0.0.1", port=port, debug=False)
+    print(f"Scheme Finder server running at http://0.0.0.0:{port}")
+    app.run(host="0.0.0.0", port=port, debug=False)

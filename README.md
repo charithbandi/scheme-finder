@@ -47,19 +47,27 @@ Instead of navigating fragmented departmental websites and manually reading dens
 
 ## 🚀 How to Run the Website
 
-### Option 1: One-Click Windows Launcher
-Double-click `run.bat` in the `scheme_finder` folder:
+### Option 1: 🌐 Run in Cloud (1-Click in Browser via GitHub Codespaces)
+Click the badge below to run Scheme Finder directly in your browser without installing anything locally:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/charithbandi/scheme-finder)
+
+> GitHub Codespaces automatically builds the Python environment, runs the Flask server, and pops open the live website in a new tab!
+
+---
+
+### Option 2: 💻 Run Locally on Windows (One-Click Launcher)
+Double-click `run.bat` in the repository folder:
 ```cmd
 run.bat
 ```
 
-### Option 2: Command Line
-```powershell
-cd scheme_finder
-..\backend\venv\Scripts\python.exe app.py
+### Option 3: Terminal / Command Line
+```bash
+pip install -r requirements.txt
+python app.py
 ```
-
-Then open your browser and go to:
+Then open your browser and navigate to:
 👉 **`http://127.0.0.1:5000`**
 
 ---
