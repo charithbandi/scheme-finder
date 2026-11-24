@@ -923,6 +923,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initPresetChips();
   initChecklistDialog();
   initExploreTab();
+  initPortalsDirectory();
   initSidebarSync();
   initResultsFilterChips();
   initClearBtn();
@@ -1325,6 +1326,16 @@ function evaluateLocally(profile) {
   return results;
 }
 
+// Helper for Extracting Clean Government Portal Domain
+function getPortalDomain(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname.replace(/^www\./, '');
+  } catch (e) {
+    return "gov.in";
+  }
+}
+
 // Helper for State Badges
 function getStateBadge(state) {
   const norm = (state || "").toLowerCase().trim();
@@ -1388,6 +1399,7 @@ function renderEligibleSchemesIntoDOM(schemes) {
 
   let html = "";
   schemes.forEach((item, index) => {
+    const domain = getPortalDomain(item.official_portal_url);
     const whyQualifyHtml = (item.why_you_qualify || [])
       .map(r => `<li class="why-qualify-item"><span class="why-qualify-check">✓</span><span>${r}</span></li>`)
       .join("");
@@ -1406,6 +1418,7 @@ function renderEligibleSchemesIntoDOM(schemes) {
             <div class="scheme-tags">
               ${getStateBadge(item.state)}
               <span class="badge badge-info">${item.category_type || "Welfare"}</span>
+              <span class="portal-verified-domain" title="Verified official government portal">🏛️ ${domain}</span>
             </div>
             <div class="scheme-match-pill">
               <span class="match-pct">${item.match_percentage || 95}%</span>
@@ -1436,8 +1449,8 @@ function renderEligibleSchemesIntoDOM(schemes) {
         </div>
 
         <div class="scheme-card-actions">
-          <a href="${item.official_portal_url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-            Apply on official portal
+          <a href="${item.official_portal_url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" title="Apply directly on official ${domain} portal in new tab">
+            Apply on Official Portal ↗
           </a>
           <button class="btn btn-secondary btn-sm view-checklist-btn" data-id="${item.scheme_id}">
             Save to checklist
@@ -1678,12 +1691,14 @@ function renderExploreGrid(schemes) {
   grid.innerHTML = schemes.map(s => {
     const sId = s.id || s.scheme_id;
     const isBookmarked = isSchemeBookmarked(sId);
+    const domain = getPortalDomain(s.official_portal_url);
     return `
     <div class="explore-scheme-card">
       <div>
         <div style="display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;margin-bottom:0.55rem;">
           ${getStateBadge(s.state)}
           <span class="badge badge-info">${s.category_type}</span>
+          <span class="portal-verified-domain" title="Verified official government portal">🏛️ ${domain}</span>
         </div>
         <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.25rem;line-height:1.3;">${s.name}</h4>
         <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.55rem;">${s.department}</p>
@@ -1692,8 +1707,8 @@ function renderExploreGrid(schemes) {
       <div>
         <div style="font-size:0.83rem;font-weight:600;color:var(--accent-primary);margin-bottom:0.7rem;line-height:1.35;">${s.benefit}</div>
         <div style="display:flex;gap:0.4rem;align-items:center;">
-          <a href="${s.official_portal_url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex:1;justify-content:center;">
-            View on Official Portal ↗
+          <a href="${s.official_portal_url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="flex:1;justify-content:center;" title="Apply on official ${domain} portal">
+            Apply on Official Portal ↗
           </a>
           <button type="button" class="btn btn-ghost btn-sm bookmark-scheme-btn ${isBookmarked ? 'bookmarked' : ''}" data-id="${sId}" title="Bookmark this scheme">
             ${isBookmarked ? '★' : '☆'}
@@ -1708,4 +1723,649 @@ function renderExploreGrid(schemes) {
   grid.querySelectorAll(".bookmark-scheme-btn").forEach(btn => {
     btn.addEventListener("click", () => toggleBookmarkScheme(btn.getAttribute("data-id")));
   });
+}
+
+// =============================================================
+// 8. Official Government Portals Directory System
+// =============================================================
+const FALLBACK_PORTALS = [
+  // Central
+  {
+    id: "central-nsp",
+    name: "National Scholarship Portal (NSP)",
+    state: "Central",
+    category: "Scholarships & Education",
+    department: "Ministry of Electronics & IT / Ministry of Education, Govt. of India",
+    url: "https://scholarships.gov.in",
+    domain: "scholarships.gov.in",
+    badge: "Central Govt",
+    icon: "🎓",
+    description: "Official Government of India single-window platform for application, renewal, and DBT disbursement of 100+ Central, UGC, and AICTE scholarship programs.",
+    services: [
+      "Central Sector Scheme for College & University Students (CSSS)",
+      "Post-Matric Scholarships for SC, ST, OBC and Minorities",
+      "AICTE Pragati, Saksham & Swanath Technical Scholarships",
+      "Direct Benefit Transfer (DBT) payment tracking"
+    ]
+  },
+  {
+    id: "central-myscheme",
+    name: "myScheme Portal (National Schemes Gateway)",
+    state: "Central",
+    category: "National Gateways",
+    department: "National e-Governance Division (NeGD) & MeitY, Govt. of India",
+    url: "https://www.myscheme.gov.in",
+    domain: "myscheme.gov.in",
+    badge: "Central Govt",
+    icon: "🏛️",
+    description: "National e-Governance marketplace helping citizens find eligibility across 1,200+ Central and State welfare schemes based on demographic criteria.",
+    services: [
+      "Universal Scheme Search across all Ministries",
+      "Multi-criteria citizen eligibility evaluation",
+      "Direct links to official departmental application forms",
+      "Document requirements & guideline checklists"
+    ]
+  },
+  {
+    id: "central-digilocker",
+    name: "DigiLocker (National Document Wallet)",
+    state: "Central",
+    category: "Identity & Records",
+    department: "Digital India Corporation, Ministry of Electronics & IT",
+    url: "https://www.digilocker.gov.in",
+    domain: "digilocker.gov.in",
+    badge: "Digital India",
+    icon: "📁",
+    description: "Legally recognized digital wallet under IT Act 2000. Fetch, verify, and store authentic marksheets, Aadhaar, Caste, and Income certificates online.",
+    services: [
+      "Fetch authentic 10th & 12th Board Marksheets (CBSE & State)",
+      "Store Tahsildar Income & Community/Caste certificates",
+      "Paperless digital document sharing for admissions",
+      "Verify Aadhaar, PAN, and Ration Card digitally"
+    ]
+  },
+  {
+    id: "central-pmkisan",
+    name: "PM-KISAN Samman Nidhi Portal",
+    state: "Central",
+    category: "Agriculture",
+    department: "Department of Agriculture & Farmers Welfare, Govt. of India",
+    url: "https://pmkisan.gov.in",
+    domain: "pmkisan.gov.in",
+    badge: "Central Govt",
+    icon: "🌾",
+    description: "Direct financial support portal transferring ₹6,000 annually to landholding farmer families across India in three equal installments.",
+    services: [
+      "New Farmer Registration",
+      "Beneficiary Status & Payment Installment Tracking",
+      "Mandatory OTP / Biometric e-KYC Verification",
+      "Aadhaar & Bank Account Seeding Verification"
+    ]
+  },
+  {
+    id: "central-pmjay",
+    name: "Ayushman Bharat - PM-JAY Portal",
+    state: "Central",
+    category: "Healthcare",
+    department: "National Health Authority (NHA), Ministry of Health & Family Welfare",
+    url: "https://pmjay.gov.in",
+    domain: "pmjay.gov.in",
+    badge: "Central Govt",
+    icon: "🏥",
+    description: "World's largest health assurance scheme providing cashless hospital coverage of ₹5,00,000 per family per year for secondary and tertiary care.",
+    services: [
+      "Check Household Eligibility (SECC 2011)",
+      "Create and download Ayushman / ABHA Cards",
+      "Empanelled Public & Private Hospital Search",
+      "Cashless Treatment Claim Tracking"
+    ]
+  },
+  {
+    id: "central-uidai",
+    name: "myAadhaar (UIDAI Official Citizen Portal)",
+    state: "Central",
+    category: "Identity & Records",
+    department: "Unique Identification Authority of India (UIDAI), Govt. of India",
+    url: "https://myaadhaar.uidai.gov.in",
+    domain: "myaadhaar.uidai.gov.in",
+    badge: "UIDAI",
+    icon: "🆔",
+    description: "Official Aadhaar portal to download e-Aadhaar, update demographic address, and verify NPCI bank account DBT mapping for welfare payments.",
+    services: [
+      "Download Password-Protected e-Aadhaar PDF",
+      "Verify Aadhaar - Bank Account Seeding / NPCI DBT Status",
+      "Online Address & Demographic Information Update",
+      "Order Secure Aadhaar PVC Card"
+    ]
+  },
+  {
+    id: "central-umang",
+    name: "UMANG (Unified Citizen Services Gateway)",
+    state: "Central",
+    category: "National Gateways",
+    department: "Ministry of Electronics and Information Technology (MeitY)",
+    url: "https://web.umang.gov.in",
+    domain: "web.umang.gov.in",
+    badge: "Digital India",
+    icon: "📱",
+    description: "All-in-one web and mobile governance portal integrating 1,200+ Central and State government citizen services, EPFO, pensions, and utility bills.",
+    services: [
+      "Access Central & State Welfare Programs",
+      "EPFO Passbook & UAN claim tracking",
+      "National Pension System (NPS) and Atal Pension Yojana",
+      "Online certificate applications and fee payments"
+    ]
+  },
+  {
+    id: "central-aicte",
+    name: "AICTE Student Development Schemes Portal",
+    state: "Central",
+    category: "Scholarships & Education",
+    department: "All India Council for Technical Education, Ministry of Education",
+    url: "https://www.aicte-india.org/schemes/students-development-schemes",
+    domain: "aicte-india.org",
+    badge: "AICTE",
+    icon: "🎓",
+    description: "Technical education scholarships providing Pragati (girls in engineering/diploma), Saksham (specially-abled), and Swanath scholarships (₹50,000/yr).",
+    services: [
+      "AICTE Pragati Scholarship for Girls in Degree/Diploma",
+      "AICTE Saksham Scholarship for Specially Abled Students",
+      "AICTE Swanath Scholarship for Orphans & Wards of Martyrs",
+      "PG Scholarship for GATE / GPAT qualified students"
+    ]
+  },
+
+  // Andhra Pradesh
+  {
+    id: "ap-jnanabhumi",
+    name: "JnanaBhumi AP (Higher Education & Scholarships)",
+    state: "Andhra Pradesh",
+    category: "Scholarships & Education",
+    department: "Higher Education & Social Welfare Department, Govt. of Andhra Pradesh",
+    url: "https://jnanabhumi.ap.gov.in",
+    domain: "jnanabhumi.ap.gov.in",
+    badge: "Govt of AP",
+    icon: "🟡",
+    description: "Andhra Pradesh's student welfare portal managing 100% Fee Reimbursement (Jagananna Vidya Deevena) and Hostel Allowance (Vasathi Deevena).",
+    services: [
+      "Jagananna Vidya Deevena (RTF - Full Tuition Fee Reimbursement)",
+      "Jagananna Vasathi Deevena (MTF - Boarding & Mess Allowance)",
+      "Post-Matric Scholarship Fresh & Renewal Registrations",
+      "College Biometric Attendance & Disbursal Status Tracking"
+    ]
+  },
+  {
+    id: "ap-navasakam",
+    name: "Navasakam AP (Welfare Schemes Delivery Portal)",
+    state: "Andhra Pradesh",
+    category: "National Gateways",
+    department: "Department of Village & Ward Secretariats, Govt. of Andhra Pradesh",
+    url: "https://navasakam.ap.gov.in",
+    domain: "navasakam.ap.gov.in",
+    badge: "Govt of AP",
+    icon: "📋",
+    description: "Comprehensive beneficiary identification portal coordinating doorstep governance and social audit for all AP welfare schemes.",
+    services: [
+      "Beneficiary verification for JVD, Cheyutha, Aasara & Amma Vodi",
+      "Grama / Ward Sachivalayam Social Audit Lists",
+      "Rice Card & Pension Eligibility Status",
+      "Spandana Grievance redressal integration"
+    ]
+  },
+  {
+    id: "ap-meeseva",
+    name: "MeeSeva AP (Online Citizen Service Portal)",
+    state: "Andhra Pradesh",
+    category: "e-Governance & Certificates",
+    department: "ITE&C Department, Government of Andhra Pradesh",
+    url: "https://onlineap.meeseva.gov.in",
+    domain: "onlineap.meeseva.gov.in",
+    badge: "Govt of AP",
+    icon: "📜",
+    description: "Official AP citizen services portal for applying and downloading digitally signed Tahsildar certificates required for fee reimbursement.",
+    services: [
+      "Integrated Community, Nativity & Date of Birth (Caste) Certificate",
+      "Tahsildar Income Certificate (for fee reimbursement & pensions)",
+      "Residence / Domicile Certificate",
+      "Family Member & Legal Heir Certificates"
+    ]
+  },
+  {
+    id: "ap-aarogyasri",
+    name: "Dr. YSR Aarogyasri Health Care Trust",
+    state: "Andhra Pradesh",
+    category: "Healthcare",
+    department: "Dr. YSR Aarogyasri Health Care Trust, Government of Andhra Pradesh",
+    url: "https://ysraarogyasri.ap.gov.in",
+    domain: "ysraarogyasri.ap.gov.in",
+    badge: "Govt of AP",
+    icon: "🏥",
+    description: "State health insurance offering 100% cashless medical and surgical treatment up to ₹25,00,000 per family per year across 3,257 procedures.",
+    services: [
+      "Dr. YSR Aarogyasri Health Card download & verification",
+      "Network Empanelled Hospital directory (AP, HYD, BLR, CHN)",
+      "Pre-authorization & treatment package tariff search",
+      "Aarogya Mithra hospital assistance contacts"
+    ]
+  },
+  {
+    id: "ap-rythu",
+    name: "YSR Rythu Bharosa Portal",
+    state: "Andhra Pradesh",
+    category: "Agriculture",
+    department: "Department of Agriculture & Cooperation, Govt. of Andhra Pradesh",
+    url: "https://ysrrythubharosa.ap.gov.in",
+    domain: "ysrrythubharosa.ap.gov.in",
+    badge: "Govt of AP",
+    icon: "🌾",
+    description: "Farmer financial support portal transferring ₹13,500/year to landholding and tenant farmers (CCRC holders) in three seasonal installments.",
+    services: [
+      "Farmer Payment Status by Aadhaar Number",
+      "e-Crop Booking & Village Social Audit Display",
+      "Tenant Cultivator (CCRC) Registration and Approval",
+      "Free Crop Insurance (YSR Uchitha Vyavasaya Bima) status"
+    ]
+  },
+  {
+    id: "ap-sachivalayam",
+    name: "AP Grama & Ward Sachivalayam Portal",
+    state: "Andhra Pradesh",
+    category: "e-Governance & Certificates",
+    department: "Village & Ward Secretariats Dept., Govt. of Andhra Pradesh",
+    url: "https://gramawardsachivalayam.ap.gov.in",
+    domain: "gramawardsachivalayam.ap.gov.in",
+    badge: "Govt of AP",
+    icon: "🏛️",
+    description: "Grassroots citizen service delivery portal offering 540+ government services through 15,004 Village and Ward Secretariats.",
+    services: [
+      "Doorstep delivery of 540+ Government Services",
+      "Rice Card, Aarogyasri Card & Pension card application",
+      "Volunteer mapping and doorstep biometric verification",
+      "Track service application token status online"
+    ]
+  },
+
+  // Telangana
+  {
+    id: "ts-epass",
+    name: "Telangana ePASS (Scholarships & Welfare Portal)",
+    state: "Telangana",
+    category: "Scholarships & Education",
+    department: "Scheduled Castes, BC, Tribal & Minority Welfare Depts., Govt. of Telangana",
+    url: "https://telanganaepass.cgg.gov.in",
+    domain: "telanganaepass.cgg.gov.in",
+    badge: "Govt of TS",
+    icon: "🔵",
+    description: "Telangana's welfare gateway managing Post-Matric Fee Reimbursement (RTF/MTF), Overseas Vidya Nidhi, and Kalyana Lakshmi & Shaadi Mubarak.",
+    services: [
+      "Post-Matric Scholarship & Full Fee Reimbursement (RTF)",
+      "Hostel & Mess Maintenance Allowance (MTF)",
+      "Telangana Overseas Vidya Nidhi (up to ₹20 Lakhs for foreign MS/MBA)",
+      "Kalyana Lakshmi & Shaadi Mubarak (₹1,00,116 bride marriage grant)",
+      "Corporate College Admissions & Pre-Matric Scholarships"
+    ]
+  },
+  {
+    id: "ts-meeseva",
+    name: "MeeSeva Telangana Citizen Portal",
+    state: "Telangana",
+    category: "e-Governance & Certificates",
+    department: "ITE&C Department & MeeSeva Directorate, Govt. of Telangana",
+    url: "https://ts.meeseva.telangana.gov.in",
+    domain: "ts.meeseva.telangana.gov.in",
+    badge: "Govt of TS",
+    icon: "📜",
+    description: "Unified citizen portal for applying and securing digitally signed revenue and community certificates required for college admissions.",
+    services: [
+      "MeeSeva Integrated Caste / Community Certificate",
+      "Tahsildar Income Certificate (mandatory for TS ePASS)",
+      "Residence & Local Candidate Certificate",
+      "Encumbrance (EC) and Revenue Extract services"
+    ]
+  },
+  {
+    id: "ts-rythubandhu",
+    name: "Rythu Bandhu & Rythu Bima Portal",
+    state: "Telangana",
+    category: "Agriculture",
+    department: "Department of Agriculture & Cooperation, Govt. of Telangana",
+    url: "https://rythubandhu.telangana.gov.in",
+    domain: "rythubandhu.telangana.gov.in",
+    badge: "Govt of TS",
+    icon: "🌾",
+    description: "Agricultural investment support portal providing direct transfers of ₹12,000–₹15,000 per acre per year and ₹5 Lakh farmer group life insurance.",
+    services: [
+      "Farmer Investment Support disbursement status",
+      "Rythu Bima (₹5 Lakh Group Life Insurance) enrollment & claims",
+      "Direct Bank Transfer transaction reconciliation",
+      "Agricultural Extension Officer (AEO) cluster contacts"
+    ]
+  },
+  {
+    id: "ts-dharani",
+    name: "Dharani Portal (Telangana Land Records & Passbook)",
+    state: "Telangana",
+    category: "Identity & Records",
+    department: "Registration & Stamps / Revenue Dept., Government of Telangana",
+    url: "https://dharani.telangana.gov.in",
+    domain: "dharani.telangana.gov.in",
+    badge: "Govt of TS",
+    icon: "🗺️",
+    description: "Integrated land administration portal providing transparent agricultural land registration, instant mutation, and digital Pattadar Passbook extraction.",
+    services: [
+      "View Land Details by Survey Number / Khata Number",
+      "Download Digital Pattadar Passbook (Agriculture)",
+      "Cadastral Map & BhuNaksha GIS view",
+      "Online slot booking for land transactions"
+    ]
+  },
+  {
+    id: "ts-aarogyasri",
+    name: "Rajiv Aarogyasri Telangana Health Care Trust",
+    state: "Telangana",
+    category: "Healthcare",
+    department: "Aarogyasri Health Care Trust, Government of Telangana",
+    url: "https://aarogyasri.telangana.gov.in",
+    domain: "aarogyasri.telangana.gov.in",
+    badge: "Govt of TS",
+    icon: "🏥",
+    description: "State health insurance platform providing cashless medical treatment and surgery up to ₹10,00,000 per family per year across 1,672 procedures.",
+    services: [
+      "Check Aarogyasri Card status with FSC / Ration Card",
+      "Find Network Hospitals & Specialty Doctors in Telangana",
+      "Treatment pre-authorization status tracking",
+      "Dial 104 / Aarogyasri toll-free helpdesk"
+    ]
+  },
+  {
+    id: "ts-govportal",
+    name: "Telangana State Official Portal",
+    state: "Telangana",
+    category: "National Gateways",
+    department: "ITE&C Department, Government of Telangana",
+    url: "https://telangana.gov.in",
+    domain: "telangana.gov.in",
+    badge: "Govt of TS",
+    icon: "🏛️",
+    description: "Apex government portal providing access to all 33 Telangana district administrations, departments, and Mahalakshmi scheme circulars.",
+    services: [
+      "Mahalakshmi Free Bus Travel & Financial Aid circulars",
+      "Government Orders (GOs) and Gazettes repository",
+      "Telangana State Public Service Commission (TGPSC) links",
+      "District Collectorate contact directory"
+    ]
+  },
+
+  // Tamil Nadu
+  {
+    id: "tn-esevai",
+    name: "Tamil Nadu e-Sevai (TNeGA Citizen Portal)",
+    state: "Tamil Nadu",
+    category: "e-Governance & Certificates",
+    department: "Tamil Nadu e-Governance Agency (TNeGA), Govt. of Tamil Nadu",
+    url: "https://www.tnesevai.tn.gov.in",
+    domain: "tnesevai.tn.gov.in",
+    badge: "Govt of TN",
+    icon: "🔴",
+    description: "Unified online service portal for citizens of Tamil Nadu to apply for, track, and download Revenue Department certificates required for college admissions.",
+    services: [
+      "Community / Caste Certificate (BC, MBC, SC, ST)",
+      "Income Certificate (Revenue Authority)",
+      "Nativity / Domicile Certificate",
+      "First Graduate Certificate (for tuition fee exemption)",
+      "No Male Child / Single Girl Child Certificate"
+    ]
+  },
+  {
+    id: "tn-pudhumai",
+    name: "Pudhumai Penn Scheme Portal",
+    state: "Tamil Nadu",
+    category: "Scholarships & Education",
+    department: "Social Welfare & Women Empowerment Dept., Govt. of Tamil Nadu",
+    url: "https://pudhumaipenn.tn.gov.in",
+    domain: "pudhumaipenn.tn.gov.in",
+    badge: "Govt of TN",
+    icon: "👩",
+    description: "Official portal for Moovalur Ramamirtham Ammaiyar Higher Education Assurance Scheme providing ₹1,000/month cash assistance to girls from TN government schools.",
+    services: [
+      "New Student Registration with EMIS School Code",
+      "College Verification and Approval workflow",
+      "Direct Benefit Transfer (DBT) monthly payment status",
+      "Grievance submission for missing payment credits"
+    ]
+  },
+  {
+    id: "tn-kmut",
+    name: "Kalaignar Magalir Urimai Thittam (KMUT Portal)",
+    state: "Tamil Nadu",
+    category: "Women & Social Welfare",
+    department: "Special Programme Implementation Dept., Govt. of Tamil Nadu",
+    url: "https://kmut.tn.gov.in",
+    domain: "kmut.tn.gov.in",
+    badge: "Govt of TN",
+    icon: "🤝",
+    description: "Universal basic income rights scheme providing ₹1,000 monthly rights grant directly to eligible women heads of families in Tamil Nadu.",
+    services: [
+      "Check Beneficiary Eligibility Status with Smart Ration Card",
+      "Aadhaar-seeded Bank Account verification",
+      "Appeal & re-verification submission for rejected applicants",
+      "Helpdesk & Tahsildar camp schedule lookup"
+    ]
+  },
+  {
+    id: "tn-tnea",
+    name: "TNEA Online (Tamil Nadu Engineering Admissions)",
+    state: "Tamil Nadu",
+    category: "Scholarships & Education",
+    department: "Directorate of Technical Education (DoTE), Govt. of Tamil Nadu",
+    url: "https://www.tneaonline.org",
+    domain: "tneaonline.org",
+    badge: "Govt of TN",
+    icon: "🎓",
+    description: "Single-window online engineering counseling portal facilitating admissions and implementing the 7.5% Government School 100% Fee Waiver quota.",
+    services: [
+      "B.E. / B.Tech Single Window Counseling Registration",
+      "7.5% Preferential Reservation & 100% Fee Waiver allotment",
+      "First Graduate Fee Concession verification",
+      "Cut-off marks & College seat vacancy matrix"
+    ]
+  },
+  {
+    id: "tn-dote",
+    name: "Tamil Nadu Directorate of Technical Education (DoTE)",
+    state: "Tamil Nadu",
+    category: "Scholarships & Education",
+    department: "Higher Education Department, Govt. of Tamil Nadu",
+    url: "https://www.tndte.gov.in",
+    domain: "tndte.gov.in",
+    badge: "Govt of TN",
+    icon: "🏛️",
+    description: "Apex technical education directorate overseeing engineering and polytechnic colleges, First Graduate fee concessions, and scholarships.",
+    services: [
+      "First Graduate Tuition Fee Waiver Guidelines & Approvals",
+      "Polytechnic / Diploma Centralized Admissions",
+      "Government and Government-Aided College Fee structures",
+      "Technical Scholarship circulars & notifications"
+    ]
+  },
+  {
+    id: "tn-cmchis",
+    name: "Chief Minister's Comprehensive Health Insurance (CMCHIS)",
+    state: "Tamil Nadu",
+    category: "Healthcare",
+    department: "Health & Family Welfare Department, Govt. of Tamil Nadu",
+    url: "https://www.cmchistn.com",
+    domain: "cmchistn.com",
+    badge: "Govt of TN",
+    icon: "🏥",
+    description: "State health insurance scheme providing cashless hospitalization up to ₹5,00,000 per family per year across 1,090 notified therapy procedures.",
+    services: [
+      "Check Beneficiary Eligibility with Smart Family Card",
+      "Search Empanelled Government and Private Hospitals",
+      "Coverage Package list & Special Surgeries directory",
+      "Download e-Card and 24x7 Emergency Call Center 104"
+    ]
+  },
+  {
+    id: "tn-govportal",
+    name: "Tamil Nadu Government Official Web Portal",
+    state: "Tamil Nadu",
+    category: "National Gateways",
+    department: "Information & Public Relations / IT Dept, Govt. of Tamil Nadu",
+    url: "https://www.tn.gov.in",
+    domain: "tn.gov.in",
+    badge: "Govt of TN",
+    icon: "🏛️",
+    description: "Official apex web portal of the Government of Tamil Nadu providing access to all 38 district administrations, gazettes, policies, and welfare programs.",
+    services: [
+      "Directory of all Tamil Nadu Welfare Departments",
+      "Government Orders (GOs) and Policy Notes",
+      "District Collectorate contacts across all 38 districts",
+      "Public Information and Press Releases"
+    ]
+  }
+];
+
+async function initPortalsDirectory() {
+  const searchInput = document.getElementById("portalSearchInput");
+  const stateTabs = document.querySelectorAll(".portal-tab-btn");
+  const categoryChips = document.querySelectorAll(".portal-filter-chip");
+  const heroViewAllBtn = document.getElementById("heroViewAllPortalsBtn");
+  const navGovtPortals = document.getElementById("navGovtPortals");
+
+  let allPortals = [];
+  try {
+    const res = await fetch("/api/portals");
+    if (res.ok) {
+      const data = await res.json();
+      allPortals = data.portals && data.portals.length > 0 ? data.portals : FALLBACK_PORTALS;
+    } else {
+      allPortals = FALLBACK_PORTALS;
+    }
+  } catch (e) {
+    allPortals = FALLBACK_PORTALS;
+  }
+
+  function filterAndRenderPortals() {
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+    const activeStateTab = document.querySelector(".portal-tab-btn.active");
+    const selectedState = activeStateTab ? activeStateTab.getAttribute("data-portal-state") : "All";
+
+    const activeCatChip = document.querySelector(".portal-filter-chip.active");
+    const selectedCat = activeCatChip ? activeCatChip.getAttribute("data-portal-cat") : "All";
+
+    const filtered = allPortals.filter(p => {
+      // State matching
+      let matchesState = true;
+      if (selectedState !== "All") {
+        matchesState = (p.state.toLowerCase() === selectedState.toLowerCase());
+      }
+
+      // Category matching
+      let matchesCat = true;
+      if (selectedCat !== "All") {
+        matchesCat = (p.category.toLowerCase() === selectedCat.toLowerCase());
+      }
+
+      // Query matching
+      let matchesQuery = true;
+      if (query) {
+        const servicesStr = (p.services || []).join(" ").toLowerCase();
+        const haystack = `${p.name} ${p.department} ${p.description} ${p.domain} ${p.state} ${servicesStr}`.toLowerCase();
+        matchesQuery = haystack.includes(query);
+      }
+
+      return matchesState && matchesCat && matchesQuery;
+    });
+
+    renderPortalsGrid(filtered);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", filterAndRenderPortals);
+  }
+
+  stateTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      stateTabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      filterAndRenderPortals();
+    });
+  });
+
+  categoryChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      categoryChips.forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      filterAndRenderPortals();
+    });
+  });
+
+  if (heroViewAllBtn) {
+    heroViewAllBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("portalsSection")?.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  if (navGovtPortals) {
+    navGovtPortals.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("portalsSection")?.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  filterAndRenderPortals();
+}
+
+function renderPortalsGrid(portals) {
+  const grid = document.getElementById("portalsGrid");
+  if (!grid) return;
+
+  if (!portals || portals.length === 0) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2.5rem; color: var(--text-muted);">No government portals found matching the selected state and category.</div>`;
+    return;
+  }
+
+  grid.innerHTML = portals.map(p => {
+    const servicesHtml = (p.services || []).slice(0, 3)
+      .map(s => `<li class="portal-service-item"><span class="portal-service-check">✓</span><span>${s}</span></li>`)
+      .join("");
+    const extraCount = (p.services || []).length > 3 ? `<li class="portal-service-item" style="color:var(--text-muted);font-size:0.72rem;">+${p.services.length - 3} more citizen services…</li>` : "";
+
+    return `
+      <div class="portal-card animate-fade-in">
+        <div>
+          <div class="portal-card-header">
+            <div class="portal-card-badges">
+              ${getStateBadge(p.state)}
+              <span class="badge badge-info">${p.category}</span>
+            </div>
+            <span class="portal-verified-domain" title="Verified official government portal">
+              <span class="pulse-indicator"></span>
+              ${p.domain}
+            </span>
+          </div>
+
+          <h3 class="portal-card-title">${p.name}</h3>
+          <p class="portal-card-dept">${p.department}</p>
+          <p class="portal-card-desc">${p.description}</p>
+
+          <div class="portal-services-box">
+            <div class="portal-services-title">Key Citizen Services:</div>
+            <ul class="portal-services-list">
+              ${servicesHtml}
+              ${extraCount}
+            </ul>
+          </div>
+        </div>
+
+        <div class="portal-card-actions">
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="portal-visit-btn" title="Open ${p.name} in a new tab">
+            Visit Official Portal ↗
+          </a>
+        </div>
+      </div>
+    `;
+  }).join("");
 }

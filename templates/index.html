@@ -29,6 +29,7 @@
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="#finderSection" class="nav-link active" id="navCheckEligibility">Check Eligibility</a>
         <a href="#exploreSection" class="nav-link" id="navExploreSchemes">Browse Directory</a>
+        <a href="#portalsSection" class="nav-link" id="navGovtPortals">Govt Portals</a>
         <a href="#aboutSection" class="nav-link" id="navAboutProject">About</a>
         <a href="#settings" class="nav-link" id="navSettingsLink">Settings</a>
       </nav>
@@ -73,6 +74,26 @@
           <button type="button" class="preset-chip" data-preset="ts_student" id="presetTs">Telangana student</button>
           <button type="button" class="preset-chip" data-preset="tn_student" id="presetTn">Tamil Nadu student</button>
           <button type="button" class="preset-chip" data-preset="central_scholar" id="presetCentral">Central scholar</button>
+        </div>
+
+        <!-- 1-Click Direct Government Portals Gateway Strip -->
+        <div class="gov-portals-quick-strip">
+          <span class="quick-portals-label">
+            <span class="pulse-indicator"></span>
+            Direct Govt Websites:
+          </span>
+          <div class="quick-portals-pills">
+            <a href="https://scholarships.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="National Scholarship Portal">🎓 NSP Central ↗</a>
+            <a href="https://telanganaepass.cgg.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="Telangana ePASS Scholarships &amp; Kalyana Lakshmi">🔵 TS ePASS ↗</a>
+            <a href="https://jnanabhumi.ap.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="JnanaBhumi Andhra Pradesh Vidya Deevena">🟡 JnanaBhumi AP ↗</a>
+            <a href="https://www.tnesevai.tn.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="Tamil Nadu e-Sevai TNeGA Citizen Portal">🔴 TN e-Sevai ↗</a>
+            <a href="https://onlineap.meeseva.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="MeeSeva Andhra Pradesh">📜 AP MeeSeva ↗</a>
+            <a href="https://ts.meeseva.telangana.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="MeeSeva Telangana">📜 TS MeeSeva ↗</a>
+            <a href="https://www.digilocker.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="DigiLocker Verified Marksheets &amp; Documents">📁 DigiLocker ↗</a>
+            <a href="https://myaadhaar.uidai.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="UIDAI myAadhaar Official Portal">🆔 myAadhaar ↗</a>
+            <a href="https://pmkisan.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="PM-KISAN Samman Nidhi Portal">🌾 PM-KISAN ↗</a>
+            <a href="#portalsSection" class="portal-quick-pill view-all-portals-pill" id="heroViewAllPortalsBtn">View All 25+ Portals ↓</a>
+          </div>
         </div>
       </div>
     </section>
@@ -437,6 +458,48 @@
       </div>
     </section>
 
+    <!-- ===== OFFICIAL GOVERNMENT PORTALS DIRECTORY ===== -->
+    <section class="portals-section" id="portalsSection">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-success" style="margin-bottom:0.4rem;">🏛️ Verified .gov.in Direct Directory</span>
+          <h2>Official Government Portals &amp; e-Seva Directory</h2>
+          <p>Direct verified links to Central, Andhra Pradesh, Telangana, and Tamil Nadu government service platforms for online scheme applications, certificate issuance, and status tracking.</p>
+        </div>
+
+        <!-- State filter tabs for Portals -->
+        <div class="state-tabs-row" id="portalStateTabs">
+          <button type="button" class="portal-tab-btn active" data-portal-state="All">🌐 All Government Portals (25)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Central">🇮🇳 Central / All-India (10)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Andhra Pradesh">🟡 Andhra Pradesh (7)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Telangana">🔵 Telangana (7)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Tamil Nadu">🔴 Tamil Nadu (8)</button>
+        </div>
+
+        <!-- Search and Category Filter -->
+        <div class="explore-controls">
+          <div class="search-box">
+            <span class="search-icon">🔎</span>
+            <input type="text" id="portalSearchInput" class="search-input" placeholder="Search official portals by name, state, or service (e.g. MeeSeva, ePASS, DigiLocker, Rythu, Scholarships)..." />
+          </div>
+          <div class="category-filter-chips" id="portalCategoryChips">
+            <button type="button" class="portal-filter-chip active" data-portal-cat="All">All Categories</button>
+            <button type="button" class="portal-filter-chip" data-portal-cat="Scholarships & Education">🎓 Scholarships &amp; Education</button>
+            <button type="button" class="portal-filter-chip" data-portal-cat="e-Governance & Certificates">📜 e-Seva &amp; Certificates</button>
+            <button type="button" class="portal-filter-chip" data-portal-cat="Healthcare">🏥 Health &amp; Insurance</button>
+            <button type="button" class="portal-filter-chip" data-portal-cat="Agriculture">🌾 Agriculture &amp; Farmers</button>
+            <button type="button" class="portal-filter-chip" data-portal-cat="Identity & Records">📁 DigiLocker &amp; Identity</button>
+            <button type="button" class="portal-filter-chip" data-portal-cat="National Gateways">🏛️ National Gateways</button>
+          </div>
+        </div>
+
+        <!-- Portals Grid -->
+        <div id="portalsGrid" class="portals-grid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
     <!-- ===== ABOUT ===== -->
     <section class="about-section" id="aboutSection">
       <div class="container">
@@ -492,6 +555,21 @@
 
       <div class="document-items-list" id="documentItemsContainer">
         <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Quick Portals Helper for Document Acquisition -->
+      <div class="checklist-portals-helper">
+        <div class="checklist-portals-title">
+          <span>🏛️</span>
+          <span>Need Official Certificates? Apply Directly:</span>
+        </div>
+        <div class="checklist-portals-links">
+          <a href="https://onlineap.meeseva.gov.in" target="_blank" rel="noopener noreferrer" class="portal-mini-badge" title="AP Income &amp; Caste Certificates">MeeSeva AP ↗</a>
+          <a href="https://ts.meeseva.telangana.gov.in" target="_blank" rel="noopener noreferrer" class="portal-mini-badge" title="TS Income &amp; Caste Certificates">MeeSeva TS ↗</a>
+          <a href="https://www.tnesevai.tn.gov.in" target="_blank" rel="noopener noreferrer" class="portal-mini-badge" title="TN Community &amp; First Graduate Certificates">TN e-Sevai ↗</a>
+          <a href="https://www.digilocker.gov.in" target="_blank" rel="noopener noreferrer" class="portal-mini-badge" title="DigiLocker Marksheets">DigiLocker ↗</a>
+          <a href="https://myaadhaar.uidai.gov.in" target="_blank" rel="noopener noreferrer" class="portal-mini-badge" title="Aadhaar NPCI Bank Seeding">myAadhaar ↗</a>
+        </div>
       </div>
     </div>
 

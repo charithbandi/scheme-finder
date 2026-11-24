@@ -36,10 +36,15 @@ Instead of navigating fragmented departmental websites and manually reading dens
    - **Print / Save as PDF** support for physical submission at e-Sevai / CSC centers.
    - Direct button routing to official government portals (e.g., National Scholarship Portal, AICTE, PM-JAY).
 
-5. **Scheme Directory & Live Search:**
+5. **Official Government Websites & Portals Directory:**
+   - Unified directory directly connecting citizens to 25+ verified Central & State government portals (Central, Andhra Pradesh, Telangana, Tamil Nadu).
+   - Instant 1-click access to MeeSeva (AP/TS), Tamil Nadu e-Sevai, TS ePASS, JnanaBhumi, DigiLocker, myAadhaar, PM-KISAN, and National Scholarship Portal (NSP).
+   - Every scheme card features a verified `.gov.in` domain badge and direct external portal routing.
+
+6. **Scheme Directory & Live Search:**
    - Real-time instant filtering across Central & State schemes by keyword and category (Education, Women Empowerment, Healthcare, Agriculture, Social Welfare).
 
-6. **Modern, Responsive Glassmorphic UI:**
+7. **Modern, Responsive Glassmorphic UI:**
    - Dark and Light mode toggle with local storage persistence.
    - Built with Vanilla CSS, Google Fonts (Outfit & Inter), and fluid micro-animations.
 
@@ -76,20 +81,21 @@ Then open your browser and navigate to:
 
 ```
 scheme_finder/
-├── app.py                 # Flask server with REST API routes & static serving
+├── app.py                 # Flask server with REST API routes (/api/evaluate, /api/schemes, /api/portals)
 ├── engine.py              # Rule-Based EligibilityEngine (Listing 4.1 in report)
 ├── schemes_data.py        # Database of Central & State schemes, rules, and documents
+├── portals_data.py        # Verified registry of 25+ Central & State government portals
 ├── run.bat                # Windows one-click startup script
-├── requirements.txt       # Python dependencies (flask, flask-cors)
+├── requirements.txt       # Python dependencies (flask, flask-cors, gunicorn)
 ├── README.md              # Project documentation
 ├── static/
 │   ├── css/
 │   │   ├── index.css      # Design tokens, variables, typography, dark/light theme
-│   │   └── components.css # Form, cards, checklist dialog, why-qualify badges
+│   │   └── components.css # Form, cards, checklist dialog, portals grid, badges
 │   └── js/
-│       └── app.js         # Reactive client logic, local evaluation fallback, modal
+│       └── app.js         # Reactive client logic, portals directory, modal dialogs
 └── templates/
-    └── index.html         # Master semantic HTML5 template
+    └── index.html         # Master semantic HTML5 template with Govt Portals hub
 ```
 
 ---

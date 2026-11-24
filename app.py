@@ -9,13 +9,15 @@ from flask_cors import CORS
 import os
 from engine import EligibilityEngine
 from schemes_data import get_all_schemes
+from portals_data import get_all_portals
 
 # Initialize app with static and template configurations
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
 
-# Load schemes database and initialize rule engine
+# Load schemes and portals databases
 schemes_list = get_all_schemes()
+portals_list = get_all_portals()
 engine = EligibilityEngine(schemes=schemes_list)
 
 
@@ -32,6 +34,7 @@ def health():
         "status": "online",
         "service": "Scheme Finder API",
         "total_schemes_loaded": len(schemes_list),
+        "total_portals_loaded": len(portals_list),
         "engine": "Boolean Threshold Rule-Based Matcher"
     })
 
@@ -122,6 +125,34 @@ def get_scheme_detail(scheme_id):
             }
             for r in scheme.rules
         ]
+    })
+
+
+@app.route("/api/portals", methods=["GET"])
+def get_portals():
+    """Returns official government portals directory with optional filtering."""
+    state = request.args.get("state")
+    category = request.args.get("category")
+    query = request.args.get("q", "").strip().lower()
+
+    filtered = []
+    for p in portals_list:
+        if state and state.lower() != "all":
+            if p["state"].lower() != state.lower():
+                continue
+        if category and category.lower() != "all":
+            if p["category"].lower() != category.lower():
+                continue
+        if query:
+            services_text = " ".join(p.get("services", [])).lower()
+            haystack = f"{p['name']} {p['department']} {p['description']} {p['domain']} {p['state']} {services_text}".lower()
+            if query not in haystack:
+                continue
+        filtered.append(p)
+
+    return jsonify({
+        "total": len(filtered),
+        "portals": filtered
     })
 
 
