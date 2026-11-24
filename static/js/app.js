@@ -310,8 +310,24 @@ const FALLBACK_SCHEMES = [
   }
 ];
 
-// Presets data for quick testing
+// Presets data for quick testing covering All 28 Indian States, 8 UTs & Pan-India
 const PRESETS = {
+  // Pan-India / Central
+  central_scholar: {
+    state: "Pan-India",
+    income: 250000,
+    category: "General",
+    marks: 90,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+
+  // 28 Indian States
   ap_student: {
     state: "Andhra Pradesh",
     income: 200000,
@@ -325,9 +341,22 @@ const PRESETS = {
     is_govt_school: false,
     is_farmer: false
   },
-  ts_student: {
-    state: "Telangana",
+  arunachal_student: {
+    state: "Arunachal Pradesh",
     income: 180000,
+    category: "ST",
+    marks: 78,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  assam_student: {
+    state: "Assam",
+    income: 160000,
     category: "OBC",
     marks: 80,
     gender: "Female",
@@ -335,6 +364,253 @@ const PRESETS = {
     is_first_graduate: false,
     is_disabled: false,
     is_single_girl_child: true,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  bihar_student: {
+    state: "Bihar",
+    income: 150000,
+    category: "OBC",
+    marks: 85,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: true,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  chhattisgarh_student: {
+    state: "Chhattisgarh",
+    income: 180000,
+    category: "ST",
+    marks: 78,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  goa_student: {
+    state: "Goa",
+    income: 190000,
+    category: "General",
+    marks: 82,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  gujarat_student: {
+    state: "Gujarat",
+    income: 220000,
+    category: "General",
+    marks: 86,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  haryana_student: {
+    state: "Haryana",
+    income: 200000,
+    category: "OBC",
+    marks: 84,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  himachal_student: {
+    state: "Himachal Pradesh",
+    income: 210000,
+    category: "General",
+    marks: 82,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  jharkhand_student: {
+    state: "Jharkhand",
+    income: 170000,
+    category: "ST",
+    marks: 79,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  ka_student: {
+    state: "Karnataka",
+    income: 180000,
+    category: "OBC",
+    marks: 84,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: true
+  },
+  kerala_student: {
+    state: "Kerala",
+    income: 190000,
+    category: "General",
+    marks: 89,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  mp_student: {
+    state: "Madhya Pradesh",
+    income: 180000,
+    category: "OBC",
+    marks: 85,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  mh_student: {
+    state: "Maharashtra",
+    income: 220000,
+    category: "General",
+    marks: 82,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  manipur_student: {
+    state: "Manipur",
+    income: 160000,
+    category: "ST",
+    marks: 80,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  meghalaya_student: {
+    state: "Meghalaya",
+    income: 170000,
+    category: "ST",
+    marks: 78,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  mizoram_student: {
+    state: "Mizoram",
+    income: 160000,
+    category: "ST",
+    marks: 81,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  nagaland_student: {
+    state: "Nagaland",
+    income: 170000,
+    category: "ST",
+    marks: 79,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  odisha_student: {
+    state: "Odisha",
+    income: 170000,
+    category: "OBC",
+    marks: 82,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: true
+  },
+  punjab_student: {
+    state: "Punjab",
+    income: 200000,
+    category: "SC",
+    marks: 84,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  rajasthan_student: {
+    state: "Rajasthan",
+    income: 190000,
+    category: "OBC",
+    marks: 85,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  sikkim_student: {
+    state: "Sikkim",
+    income: 180000,
+    category: "General",
+    marks: 83,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
     is_govt_school: false,
     is_farmer: false
   },
@@ -351,23 +627,23 @@ const PRESETS = {
     is_govt_school: true,
     is_farmer: false
   },
-  ka_student: {
-    state: "Karnataka",
+  ts_student: {
+    state: "Telangana",
     income: 180000,
     category: "OBC",
-    marks: 84,
+    marks: 80,
     gender: "Female",
     course_level: "UG",
     is_first_graduate: false,
     is_disabled: false,
-    is_single_girl_child: false,
+    is_single_girl_child: true,
     is_govt_school: false,
-    is_farmer: true
+    is_farmer: false
   },
-  mh_student: {
-    state: "Maharashtra",
-    income: 220000,
-    category: "General",
+  tripura_student: {
+    state: "Tripura",
+    income: 150000,
+    category: "SC",
     marks: 82,
     gender: "Female",
     course_level: "UG",
@@ -390,6 +666,19 @@ const PRESETS = {
     is_govt_school: false,
     is_farmer: false
   },
+  uttarakhand_student: {
+    state: "Uttarakhand",
+    income: 110000,
+    category: "General",
+    marks: 84,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
   wb_student: {
     state: "West Bengal",
     income: 150000,
@@ -403,11 +692,104 @@ const PRESETS = {
     is_govt_school: false,
     is_farmer: false
   },
-  central_scholar: {
-    state: "Pan-India",
-    income: 250000,
+
+  // 8 Union Territories
+  an_student: {
+    state: "Andaman and Nicobar Islands",
+    income: 200000,
     category: "General",
-    marks: 90,
+    marks: 80,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  ch_student: {
+    state: "Chandigarh",
+    income: 220000,
+    category: "General",
+    marks: 85,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  dnhdd_student: {
+    state: "Dadra and Nagar Haveli and Daman and Diu",
+    income: 180000,
+    category: "ST",
+    marks: 80,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  delhi_student: {
+    state: "Delhi",
+    income: 220000,
+    category: "General",
+    marks: 88,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  jk_student: {
+    state: "Jammu and Kashmir",
+    income: 190000,
+    category: "General",
+    marks: 83,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  ladakh_student: {
+    state: "Ladakh",
+    income: 180000,
+    category: "ST",
+    marks: 82,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  lakshadweep_student: {
+    state: "Lakshadweep",
+    income: 160000,
+    category: "ST",
+    marks: 80,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  puducherry_student: {
+    state: "Puducherry",
+    income: 200000,
+    category: "OBC",
+    marks: 84,
     gender: "Female",
     course_level: "UG",
     is_first_graduate: false,
@@ -1191,16 +1573,40 @@ function initClearBtn() {
 // -------------------------------------------------------------
 function initPresetChips() {
   const chips = document.querySelectorAll(".preset-chip");
+  const presetSelect = document.getElementById("presetStateSelect");
+
   chips.forEach(chip => {
     chip.addEventListener("click", () => {
+      chips.forEach(c => c.classList.remove("active-preset"));
+      chip.classList.add("active-preset");
       const presetKey = chip.getAttribute("data-preset");
       const data = PRESETS[presetKey];
       if (data) {
+        if (presetSelect) presetSelect.value = presetKey;
         populateForm(data);
         submitProfile();
       }
     });
   });
+
+  // Handle the State & UT sample profiles dropdown
+  if (presetSelect) {
+    presetSelect.addEventListener("change", () => {
+      const selectedKey = presetSelect.value;
+      const data = PRESETS[selectedKey];
+      if (data) {
+        chips.forEach(c => {
+          if (c.getAttribute("data-preset") === selectedKey) {
+            c.classList.add("active-preset");
+          } else {
+            c.classList.remove("active-preset");
+          }
+        });
+        populateForm(data);
+        submitProfile();
+      }
+    });
+  }
 
   // Income quick buttons
   const quickIncomeBtns = document.querySelectorAll(".quick-income-btn");

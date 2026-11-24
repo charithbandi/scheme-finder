@@ -70,6 +70,7 @@
         <!-- 1-Click Test Presets -->
         <div class="quick-fill-bar">
           <span class="quick-fill-label">Try sample profiles:</span>
+          <button type="button" class="preset-chip" data-preset="central_scholar" id="presetCentral">🇮🇳 Pan-India</button>
           <button type="button" class="preset-chip" data-preset="ap_student" id="presetAp">Andhra Pradesh</button>
           <button type="button" class="preset-chip" data-preset="ts_student" id="presetTs">Telangana</button>
           <button type="button" class="preset-chip" data-preset="tn_student" id="presetTn">Tamil Nadu</button>
@@ -77,7 +78,54 @@
           <button type="button" class="preset-chip" data-preset="mh_student" id="presetMh">Maharashtra</button>
           <button type="button" class="preset-chip" data-preset="up_student" id="presetUp">Uttar Pradesh</button>
           <button type="button" class="preset-chip" data-preset="wb_student" id="presetWb">West Bengal</button>
-          <button type="button" class="preset-chip" data-preset="central_scholar" id="presetCentral">Central / Pan-India</button>
+          
+          <!-- Interactive Selector for All 36 States & Union Territories -->
+          <div class="preset-dropdown-wrap">
+            <select id="presetStateSelect" class="preset-dropdown-select" title="Auto-fill sample profile for any Indian state or union territory">
+              <option value="" disabled selected>✨ All 36 States &amp; UTs Profiles...</option>
+              <option value="central_scholar">🇮🇳 Pan-India / Central Scholar</option>
+              <optgroup label="All 28 States">
+                <option value="ap_student">Andhra Pradesh</option>
+                <option value="arunachal_student">Arunachal Pradesh</option>
+                <option value="assam_student">Assam</option>
+                <option value="bihar_student">Bihar</option>
+                <option value="chhattisgarh_student">Chhattisgarh</option>
+                <option value="goa_student">Goa</option>
+                <option value="gujarat_student">Gujarat</option>
+                <option value="haryana_student">Haryana</option>
+                <option value="himachal_student">Himachal Pradesh</option>
+                <option value="jharkhand_student">Jharkhand</option>
+                <option value="ka_student">Karnataka</option>
+                <option value="kerala_student">Kerala</option>
+                <option value="mp_student">Madhya Pradesh</option>
+                <option value="mh_student">Maharashtra</option>
+                <option value="manipur_student">Manipur</option>
+                <option value="meghalaya_student">Meghalaya</option>
+                <option value="mizoram_student">Mizoram</option>
+                <option value="nagaland_student">Nagaland</option>
+                <option value="odisha_student">Odisha</option>
+                <option value="punjab_student">Punjab</option>
+                <option value="rajasthan_student">Rajasthan</option>
+                <option value="sikkim_student">Sikkim</option>
+                <option value="tn_student">Tamil Nadu</option>
+                <option value="ts_student">Telangana</option>
+                <option value="tripura_student">Tripura</option>
+                <option value="up_student">Uttar Pradesh</option>
+                <option value="uttarakhand_student">Uttarakhand</option>
+                <option value="wb_student">West Bengal</option>
+              </optgroup>
+              <optgroup label="All 8 Union Territories">
+                <option value="an_student">Andaman and Nicobar Islands</option>
+                <option value="ch_student">Chandigarh</option>
+                <option value="dnhdd_student">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="delhi_student">Delhi (NCT)</option>
+                <option value="jk_student">Jammu and Kashmir</option>
+                <option value="ladakh_student">Ladakh</option>
+                <option value="lakshadweep_student">Lakshadweep</option>
+                <option value="puducherry_student">Puducherry</option>
+              </optgroup>
+            </select>
+          </div>
         </div>
 
         <!-- 1-Click Direct Government Portals Gateway Strip -->
