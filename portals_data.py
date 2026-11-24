@@ -843,5 +843,182 @@ def get_all_portals() -> List[Dict[str, Any]]:
                 "Pragyan Bharati Higher Education Fee Waiver"
             ],
             "popular": True
+        },
+
+        # =========================================================================
+        # 🌲 JHARKHAND STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "jh-ekalyan",
+            "name": "E-Kalyan Jharkhand (Scholarship & Welfare Portal)",
+            "state": "Jharkhand",
+            "category": "Scholarships & Education",
+            "department": "Scheduled Tribe, SC, Minority and BC Welfare Dept, Govt. of Jharkhand",
+            "url": "https://ekalyan.cgg.gov.in",
+            "domain": "ekalyan.cgg.gov.in",
+            "badge": "Govt of JH",
+            "icon": "🌲",
+            "description": "Post-Matric scholarship portal managing full fee reimbursement and maintenance allowances for SC, ST, and BC students of Jharkhand.",
+            "services": [
+                "Post-Matric Scholarship within & outside state",
+                "Pre-Matric Scholarship tracking",
+                "DBT bank account seeding check"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🌾 CHHATTISGARH STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "cg-mahtari",
+            "name": "Mahtari Vandan Yojana Official Portal",
+            "state": "Chhattisgarh",
+            "category": "Women & Social Welfare",
+            "department": "Women & Child Development Department, Govt. of Chhattisgarh",
+            "url": "https://mahtarivandan.cgstate.gov.in",
+            "domain": "mahtarivandan.cgstate.gov.in",
+            "badge": "Govt of CG",
+            "icon": "🌾",
+            "description": "Official citizen portal for registration, beneficiary status, and ₹1,000 monthly DBT tracking for married women in Chhattisgarh.",
+            "services": [
+                "Mahtari Vandan Application Status Search",
+                "Aadhaar-linked Bank Account DBT check",
+                "Objection & Grievance redressal"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🏖️ GOA STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "ga-services",
+            "name": "Goa Online Services Portal (e-District Goa)",
+            "state": "Goa",
+            "category": "e-Governance & Certificates",
+            "department": "Department of Information Technology, Government of Goa",
+            "url": "https://services.goa.gov.in",
+            "domain": "services.goa.gov.in",
+            "badge": "Govt of GA",
+            "icon": "🏖️",
+            "description": "Unified platform for 150+ Goa government citizen services: Griha Aadhar, DSSS pension, Residence, Caste, and Income certificates.",
+            "services": [
+                "Griha Aadhar Scheme for Homemakers",
+                "Dayanand Social Security Scheme (DSSS)",
+                "Residence & Income Certificates",
+                "Caste and Community certificates"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🏔️ HIMACHAL PRADESH STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "hp-eseva",
+            "name": "eSewa Himachal Pradesh (Citizen Services Portal)",
+            "state": "Himachal Pradesh",
+            "category": "e-Governance & Certificates",
+            "department": "Department of Digital Technologies and Governance, Govt. of HP",
+            "url": "https://eseva.hp.gov.in",
+            "domain": "eseva.hp.gov.in",
+            "badge": "Govt of HP",
+            "icon": "🏔️",
+            "description": "Online service delivery for Pyari Behna Sukh Samman Nidhi, Bonafide Himachali, Income, and Agricultural certificates.",
+            "services": [
+                "Indira Gandhi Pyari Behna Scheme (₹1,500/mo) status",
+                "Bonafide Himachali Certificate",
+                "Income & Agriculturist Certificates"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # ⛰️ UTTARAKHAND STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "uk-nandagaura",
+            "name": "Nanda Gaura Yojana Official Portal",
+            "state": "Uttarakhand",
+            "category": "Women & Social Welfare",
+            "department": "Women Empowerment & Child Development Department, Govt. of Uttarakhand",
+            "url": "https://nandagaura.uk.gov.in",
+            "domain": "nandagaura.uk.gov.in",
+            "badge": "Govt of UK",
+            "icon": "⛰️",
+            "description": "Official portal managing ₹51,000 financial assistance grants for girl students completing Class 12 entering higher education in Uttarakhand.",
+            "services": [
+                "Nanda Gaura Online Application & Status",
+                "Document verification and approval workflow",
+                "DBT fund disbursement tracking"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # ❄️ JAMMU AND KASHMIR (UT) GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "jk-sehat",
+            "name": "PM-JAY SEHAT Portal (Universal Health J&K)",
+            "state": "Jammu and Kashmir",
+            "category": "Healthcare",
+            "department": "State Health Agency, Government of Jammu and Kashmir",
+            "url": "https://sehat.jk.gov.in",
+            "domain": "sehat.jk.gov.in",
+            "badge": "Govt of JK",
+            "icon": "❄️",
+            "description": "Universal health coverage portal for 100% families of J&K providing Golden Card generation and cashless hospital searches.",
+            "services": [
+                "SEHAT Golden Card Verification & Download",
+                "Empanelled Public & Private Hospital search",
+                "Treatment pre-authorization status"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🏖️ PUDUCHERRY (UT) GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "py-dhte",
+            "name": "DHTE Puducherry (Higher & Technical Education)",
+            "state": "Puducherry",
+            "category": "Scholarships & Education",
+            "department": "Directorate of Higher & Technical Education, Govt. of Puducherry",
+            "url": "https://dhte.py.gov.in",
+            "domain": "dhte.py.gov.in",
+            "badge": "Govt of PY",
+            "icon": "🏖️",
+            "description": "Manages the Perunthalaivar Kamarajar Financial Assistance Scheme providing 100% tuition reimbursement for CENTAC students in Puducherry.",
+            "services": [
+                "Perunthalaivar Kamarajar Tuition Reimbursement",
+                "CENTAC counseling financial concessions",
+                "Post-Matric scholarship disbursals"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🥛 HARYANA STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "hr-chhatravratti",
+            "name": "Har-Chhatravratti Haryana (State Scholarship Portal)",
+            "state": "Haryana",
+            "category": "Scholarships & Education",
+            "department": "Higher Education Department, Government of Haryana",
+            "url": "https://harchhatravratti.highereduhry.ac.in",
+            "domain": "harchhatravratti.highereduhry.ac.in",
+            "badge": "Govt of HR",
+            "icon": "🥛",
+            "description": "Centralized scholarship portal for all post-matric and higher education scholarships integrated with Parivar Pehchan Patra (PPP).",
+            "services": [
+                "Post-Matric Scholarship for SC, BC & Meritorious",
+                "Parivar Pehchan Patra (PPP) verification",
+                "Direct Bank Transfer payment tracking"
+            ],
+            "popular": True
         }
     ]

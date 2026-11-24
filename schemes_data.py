@@ -1403,6 +1403,585 @@ def get_all_schemes():
                 Rule("income", "<=", 800000, "Micro-entrepreneurs, traders, and small business operators")
             ],
             priority_weight=86
+        ),
+
+        # =========================================================================
+        # 🌄 ARUNACHAL PRADESH SCHEMES
+        # =========================================================================
+        Scheme(
+            id="ar-apst-01",
+            name="Arunachal Pradesh APST Post-Matric Scholarship Scheme",
+            department="Directorate of Higher & Technical Education, Government of Arunachal Pradesh",
+            category_type="Education",
+            state="Arunachal Pradesh",
+            description="Provides 100% tuition fee reimbursement and monthly maintenance allowances to indigenous APST students pursuing higher education.",
+            benefit="100% Tuition Fee Reimbursement + Annual Book Grant & Monthly Maintenance Allowance",
+            official_portal_url="https://scholarships.gov.in",
+            documents=[
+                "Arunachal Pradesh Scheduled Tribe (APST) Certificate",
+                "PRC (Permanent Resident Certificate) of Arunachal Pradesh",
+                "Income Certificate (≤ ₹2.5 Lakh/annum)",
+                "Class 10th & 12th Marksheets and College Admission Receipt"
+            ],
+            rules=[
+                Rule("income", "<=", 250000, "Family income does not exceed ₹2.5 Lakh per annum"),
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Degree", "PhD"], "Enrolled in recognized Post-Matriculation course")
+            ],
+            priority_weight=94
+        ),
+
+        # =========================================================================
+        # 🌾 CHHATTISGARH STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="cg-mahtari-01",
+            name="Mahtari Vandan Yojana (Direct Financial Support for Women)",
+            department="Women & Child Development Department, Government of Chhattisgarh",
+            category_type="Women Empowerment",
+            state="Chhattisgarh",
+            description="Flagship welfare scheme providing ₹1,000 monthly cash assistance directly to married women aged 21+ in Chhattisgarh to foster health and empowerment.",
+            benefit="Direct monthly bank deposit of ₹1,000 (₹12,000/year) via DBT",
+            official_portal_url="https://mahtarivandan.cgstate.gov.in",
+            documents=[
+                "Chhattisgarh Domicile / Niwas Certificate",
+                "Marriage Certificate / Ration Card / Panchayat Verification",
+                "Aadhaar Card linked to Bank Account (DBT active)",
+                "Age Proof (Bride must be ≥ 21 years)"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Targeted exclusively for married women aged 21+"),
+                Rule("income", "<=", 300000, "Eligible families not in government service or paying income tax")
+            ],
+            priority_weight=98
+        ),
+
+        Scheme(
+            id="cg-postmatric-02",
+            name="Chhattisgarh Post-Matric Scholarship (SC/ST/OBC)",
+            department="Tribal and Scheduled Caste Development Department, Govt. of Chhattisgarh",
+            category_type="Education",
+            state="Chhattisgarh",
+            description="Provides complete tuition fee reimbursement and living maintenance allowances to SC, ST, and OBC students in Chhattisgarh.",
+            benefit="100% Tuition Fee Reimbursement + Monthly Maintenance Allowance",
+            official_portal_url="https://postmatric-scholarship.cg.nic.in",
+            documents=[
+                "Caste Certificate (ST/SC/OBC)",
+                "Chhattisgarh Niwas Praman Patra",
+                "Income Certificate (≤ ₹2.5 Lakh for SC/ST; ≤ ₹1.5 Lakh for OBC)",
+                "College Admission Receipt and Marksheets"
+            ],
+            rules=[
+                Rule("income", "<=", 250000, "Family income within ₹2.5 Lakh limit"),
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Degree"], "Pursuing Post-Matric degree")
+            ],
+            priority_weight=95
+        ),
+
+        # =========================================================================
+        # 🏖️ GOA STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="ga-griha-01",
+            name="Griha Aadhar Scheme (Support for Homemakers)",
+            department="Directorate of Women and Child Development, Government of Goa",
+            category_type="Women Empowerment",
+            state="Goa",
+            description="Provides monthly financial assistance of ₹1,500 to homemakers from poor and middle-income families to cushion against rising living costs.",
+            benefit="₹1,500 per month (₹18,000/year) direct cash transfer to homemakers",
+            official_portal_url="https://services.goa.gov.in",
+            documents=[
+                "15 Years Residence Certificate in Goa",
+                "Aadhaar Card of Applicant & Husband",
+                "Income Certificate (Family income below ₹3.0 Lakh/annum)",
+                "Bank Account Passbook"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Targeted for married homemakers resident in Goa for ≥ 15 years"),
+                Rule("income", "<=", 300000, "Annual family income does not exceed ₹3 Lakh")
+            ],
+            priority_weight=96
+        ),
+
+        Scheme(
+            id="ga-dsss-02",
+            name="Dayanand Social Security Scheme (DSSS Goa)",
+            department="Directorate of Social Welfare, Government of Goa",
+            category_type="Social Welfare",
+            state="Goa",
+            description="Provides monthly pension and financial assistance up to ₹2,500 to senior citizens, widows, and persons with severe disabilities in Goa.",
+            benefit="Monthly financial pension of ₹2,000 to ₹2,500 credited via DBT",
+            official_portal_url="https://socialwelfare.goa.gov.in",
+            documents=[
+                "15 Years Residence Certificate in Goa",
+                "Age Proof (Senior Citizen ≥ 60 yrs, or Disability / Widow certificate)",
+                "Income Certificate (Family income below ₹2.0 Lakh/year)"
+            ],
+            rules=[
+                Rule("income", "<=", 200000, "Family income is within ₹2 Lakh per annum"),
+                Rule("category", "in", ["General", "OBC", "SC", "ST", "EWS"], "Open to all low-income residents of Goa")
+            ],
+            priority_weight=92
+        ),
+
+        # =========================================================================
+        # 🏔️ HIMACHAL PRADESH STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="hp-pyari-01",
+            name="Indira Gandhi Pyari Behna Sukh Samman Nidhi",
+            department="Social Justice & Empowerment Department, Government of Himachal Pradesh",
+            category_type="Women Empowerment",
+            state="Himachal Pradesh",
+            description="Empowers adult women in Himachal Pradesh aged 18 to 59 years with direct monthly cash transfers of ₹1,500.",
+            benefit="₹1,500 per month (₹18,000/year) deposited directly into women's bank accounts",
+            official_portal_url="https://eseva.hp.gov.in",
+            documents=[
+                "Himachal Bonafide / Domicile Certificate",
+                "Aadhaar Card linked to Bank Account (DBT enabled)",
+                "Ration Card copy",
+                "Self-declaration confirming no family member in government job"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Targeted for women residents of HP aged 18 to 59 years"),
+                Rule("income", "<=", 300000, "Eligible non-government household category")
+            ],
+            priority_weight=97
+        ),
+
+        Scheme(
+            id="hp-rin-02",
+            name="Dr. Y.S. Parmar Vidyarthi Rin Yojana (Subsidized Education Loan)",
+            department="Higher Education Department, Government of Himachal Pradesh",
+            category_type="Education",
+            state="Himachal Pradesh",
+            description="Offers highly subsidized educational loans up to ₹20 Lakh at a nominal 1% simple interest to pursue engineering, medicine, and higher professional education.",
+            benefit="Subsidized Education Loan up to ₹20,00,000 at 1% interest rate",
+            official_portal_url="https://highereducation.hp.gov.in",
+            documents=[
+                "Himachal Bonafide Certificate",
+                "Marksheets of Class 10th and 12th with minimum 60% marks",
+                "Income Certificate (Family income ≤ ₹4.0 Lakh/annum)",
+                "College Admission Offer Letter and Fee Structure"
+            ],
+            rules=[
+                Rule("income", "<=", 400000, "Family income does not exceed ₹4 Lakh per annum"),
+                Rule("marks", ">=", 60, "Qualifying board examination score meets 60% requirement"),
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Engineering", "Medicine"], "Enrolled in professional higher education")
+            ],
+            priority_weight=95
+        ),
+
+        # =========================================================================
+        # 🌲 JHARKHAND STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="jh-maiyan-01",
+            name="Jharkhand Mukhyamantri Maiyan Samman Yojana (JMMSY)",
+            department="Women, Child Development and Social Security Dept, Govt. of Jharkhand",
+            category_type="Women Empowerment",
+            state="Jharkhand",
+            description="Flagship women's financial security initiative transferring ₹1,000 monthly cash assistance to women aged 18 to 50 years in Jharkhand.",
+            benefit="₹1,000 per month (₹12,000/year) direct cash transfer into Aadhaar-linked accounts",
+            official_portal_url="https://mmmsy.jharkhand.gov.in",
+            documents=[
+                "Jharkhand Residential Certificate",
+                "Aadhaar Card linked to Bank Account (DBT seeded)",
+                "Ration Card (Antyodaya / BPL / Green Card)",
+                "Age Proof (18 to 50 years)"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Targeted for women residents of Jharkhand aged 18-50"),
+                Rule("income", "<=", 250000, "Family income is within ₹2.5 Lakh per annum")
+            ],
+            priority_weight=98
+        ),
+
+        Scheme(
+            id="jh-guruji-02",
+            name="Guru Ji Student Credit Card Scheme",
+            department="Higher and Technical Education Department, Government of Jharkhand",
+            category_type="Education",
+            state="Jharkhand",
+            description="Provides collateral-free educational loans up to ₹15 Lakh at a subsidized 4% simple interest with a 15-year repayment tenure for higher studies.",
+            benefit="Collateral-free Education Loan up to ₹15,00,000 at 4% interest rate",
+            official_portal_url="https://gurujiscc.jharkhand.gov.in",
+            documents=[
+                "Jharkhand Domicile Certificate",
+                "Class 10th and 12th Marksheets from Jharkhand recognized boards",
+                "Admission Letter in NIRF-ranked or accredited institutions",
+                "Co-borrower Aadhaar and PAN Card"
+            ],
+            rules=[
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Engineering", "Medicine"], "Pursuing technical or professional graduation"),
+                Rule("income", "<=", 800000, "Eligible Jharkhand youth seeking higher education loan")
+            ],
+            priority_weight=94
+        ),
+
+        # =========================================================================
+        # 🌺 MANIPUR STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="mn-cmht-01",
+            name="Chief Minister-gi Hakshelgi Tengbang (CMHT Health Scheme)",
+            department="Health Department, Government of Manipur",
+            category_type="Healthcare",
+            state="Manipur",
+            description="Provides cashless hospitalization coverage up to ₹5,00,000 per family per year for secondary and tertiary care in network hospitals in Manipur.",
+            benefit="100% Cashless medical treatment cover up to ₹5,00,000 per family per year",
+            official_portal_url="https://cmhtmanipur.gov.in",
+            documents=[
+                "CMHT Health Card / Ration Card",
+                "Aadhaar Card of all family members",
+                "Income Certificate (≤ ₹1.5 Lakh/annum) or BPL card"
+            ],
+            rules=[
+                Rule("income", "<=", 200000, "Economically weaker household income limit"),
+                Rule("category", "in", ["General", "OBC", "SC", "ST", "EWS"], "Open to low-income residents of Manipur")
+            ],
+            priority_weight=95
+        ),
+
+        # =========================================================================
+        # ☁️ MEGHALAYA STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="ml-mhis-01",
+            name="Meghalaya Health Insurance Scheme (MHIS Phase 5)",
+            department="Department of Health and Family Welfare, Government of Meghalaya",
+            category_type="Healthcare",
+            state="Meghalaya",
+            description="Universal health insurance scheme converging with PM-JAY to provide ₹5,30,000 cashless medical cover for all citizens of Meghalaya.",
+            benefit="Comprehensive cashless hospitalization up to ₹5,30,000 per family per year",
+            official_portal_url="https://mhis.org.in",
+            documents=[
+                "MHIS Smart Card",
+                "Meghalaya Permanent Residential Proof",
+                "Aadhaar Card of all enrolled family members"
+            ],
+            rules=[
+                Rule("category", "in", ["General", "OBC", "SC", "ST", "EWS"], "Universal health coverage for all Meghalaya residents")
+            ],
+            priority_weight=95
+        ),
+
+        # =========================================================================
+        # 🌄 MIZORAM STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="mz-mshcs-01",
+            name="Mizoram State Health Care Scheme (MSHCS)",
+            department="Health and Family Welfare Department, Government of Mizoram",
+            category_type="Healthcare",
+            state="Mizoram",
+            description="State-sponsored health assurance scheme providing cashless hospital reimbursement up to ₹5,00,000 per family per year.",
+            benefit="Cashless medical hospitalization reimbursement up to ₹5,00,000/yr",
+            official_portal_url="https://health.mizoram.gov.in",
+            documents=[
+                "MSHCS Beneficiary Card",
+                "Mizoram Domicile / Tribal Certificate",
+                "Aadhaar Card and Hospital Discharge Summary"
+            ],
+            rules=[
+                Rule("income", "<=", 300000, "Low-income family threshold satisfied"),
+                Rule("category", "in", ["General", "ST", "OBC", "SC"], "Open to all eligible families in Mizoram")
+            ],
+            priority_weight=94
+        ),
+
+        # =========================================================================
+        # 🦅 NAGALAND STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="nl-cmhis-01",
+            name="Chief Minister's Health Insurance Scheme (CMHIS Nagaland)",
+            department="Department of Health & Family Welfare, Government of Nagaland",
+            category_type="Healthcare",
+            state="Nagaland",
+            description="Universal cashless health insurance protecting all indigenous and permanent residents of Nagaland up to ₹5,00,000 per family per year.",
+            benefit="Cashless hospitalization cover up to ₹5,00,000 per family per year",
+            official_portal_url="https://cmhis.nagaland.gov.in",
+            documents=[
+                "Indigenous Inhabitant Certificate (IIC) of Nagaland",
+                "Nagaland Permanent Residence Certificate",
+                "Aadhaar Card of all enrolled family members"
+            ],
+            rules=[
+                Rule("category", "in", ["ST", "General", "OBC", "SC"], "Open to all indigenous residents of Nagaland")
+            ],
+            priority_weight=95
+        ),
+
+        # =========================================================================
+        # 🏔️ SIKKIM STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="sk-aama-01",
+            name="Aama Yojana (Direct Financial Assistance for Mothers)",
+            department="Women and Child Development Department, Government of Sikkim",
+            category_type="Women Empowerment",
+            state="Sikkim",
+            description="Pioneering financial welfare scheme providing an annual cash grant of ₹40,000 to all unemployed, non-working mothers in Sikkim.",
+            benefit="Annual direct grant of ₹40,000 deposited directly into mother's bank account",
+            official_portal_url="https://sikkim.gov.in",
+            documents=[
+                "Certificate of Identification (COI) / Sikkim Subject Certificate",
+                "Mother's Aadhaar Card",
+                "Unemployed Non-Working Declaration verified by Ward Panchayat",
+                "Bank Account Passbook"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Targeted for non-working mothers resident in Sikkim"),
+                Rule("income", "<=", 400000, "Eligible household category in Sikkim")
+            ],
+            priority_weight=97
+        ),
+
+        # =========================================================================
+        # 🌿 TRIPURA STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="tr-kanya-01",
+            name="Mukhyamantri Kanya Atmanirbhar Yojana (Girl Child Higher Ed)",
+            department="Higher Education Department, Government of Tripura",
+            category_type="Education",
+            state="Tripura",
+            description="Incentivizes top meritorious girl students in Class 12 board exams by providing free two-wheelers (scooters) or financial scholarships for college.",
+            benefit="Free Electric/Petrol Scooter or Higher Education Cash Grant",
+            official_portal_url="https://highereducation.tripura.gov.in",
+            documents=[
+                "Permanent Resident of Tripura Certificate (PRTC)",
+                "Class 12th Board Marksheet with top percentile score",
+                "College Admission Receipt",
+                "Aadhaar Card"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Designed exclusively for female students"),
+                Rule("marks", ">=", 75, "Secured high marks in Class 12 board examination"),
+                Rule("course_level", "in", ["UG", "Degree", "B.Tech", "Medicine"], "Enrolled in higher education degree")
+            ],
+            priority_weight=93
+        ),
+
+        # =========================================================================
+        # ⛰️ UTTARAKHAND STATE SCHEMES
+        # =========================================================================
+        Scheme(
+            id="uk-nanda-01",
+            name="Nanda Gaura Devi Kanya Dhan Yojana",
+            department="Women Empowerment & Child Development Department, Govt. of Uttarakhand",
+            category_type="Women Empowerment",
+            state="Uttarakhand",
+            description="Provides a cash grant of ₹51,000 to girl students from low-income families upon passing Class 12 and enrolling into higher education.",
+            benefit="One-time direct financial grant of ₹51,000 credited to girl student's account",
+            official_portal_url="https://nandagaura.uk.gov.in",
+            documents=[
+                "Uttarakhand Domicile / Sthai Niwas Certificate",
+                "Class 12th Passing Marksheet from Uttarakhand Board",
+                "Tehsildar Income Certificate (≤ ₹72,000/yr for rural, ₹84,000/yr for urban)",
+                "College Admission Bonafide / Fee Receipt",
+                "Aadhaar-linked Bank Account Passbook"
+            ],
+            rules=[
+                Rule("gender", "==", "Female", "Targeted for girl students"),
+                Rule("income", "<=", 120000, "Economically weaker household income limit satisfied"),
+                Rule("course_level", "in", ["UG", "Diploma", "B.Tech", "Degree"], "Pursuing higher education degree or diploma")
+            ],
+            priority_weight=96
+        ),
+
+        # =========================================================================
+        # ❄️ JAMMU AND KASHMIR (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="jk-sehat-01",
+            name="Ayushman Bharat PM-JAY SEHAT Scheme (Universal Healthcare J&K)",
+            department="State Health Agency, Health & Medical Education Dept, Govt. of J&K",
+            category_type="Healthcare",
+            state="Jammu and Kashmir",
+            description="Provides 100% universal cashless healthcare coverage up to ₹5,00,000 per family per year to all residents of Jammu and Kashmir without income ceiling.",
+            benefit="100% Cashless medical treatment cover up to ₹5,00,000 per family per year",
+            official_portal_url="https://sehat.jk.gov.in",
+            documents=[
+                "J&K Domicile Certificate",
+                "Golden Card / Ayushman Bharat SEHAT Card",
+                "Aadhaar Card of all family members",
+                "Ration Card"
+            ],
+            rules=[
+                Rule("category", "in", ["General", "OBC", "SC", "ST", "EWS"], "Universal health coverage for 100% residents of Jammu & Kashmir")
+            ],
+            priority_weight=98
+        ),
+
+        Scheme(
+            id="jk-mumkin-02",
+            name="Mumkin Scheme (Mission Youth Livelihood Program)",
+            department="Mission Youth, Government of Jammu and Kashmir",
+            category_type="Social Welfare",
+            state="Jammu and Kashmir",
+            description="Empowers unemployed youth aged 18 to 35 years in J&K by providing a 100% on-road commercial vehicle subsidy with zero down payment for self-employment.",
+            benefit="Commercial Vehicle with ₹80,000 + 10% vehicle cost subsidy from Govt of J&K",
+            official_portal_url="https://missionyouth.jk.gov.in",
+            documents=[
+                "J&K Domicile Certificate",
+                "Commercial Driving License",
+                "Unemployed youth declaration",
+                "Aadhaar Card & PAN Card"
+            ],
+            rules=[
+                Rule("income", "<=", 400000, "Unemployed youth seeking transport entrepreneurship")
+            ],
+            priority_weight=92
+        ),
+
+        # =========================================================================
+        # 🏔️ LADAKH (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="la-rewa-01",
+            name="Rewa Scheme Ladakh (Competitive Exam Financial Grant)",
+            department="Higher Education Department, Administration of UT of Ladakh",
+            category_type="Education",
+            state="Ladakh",
+            description="Provides financial grants up to ₹1,00,000 to meritorious students of Ladakh who qualify preliminary stages of civil services or enter top colleges.",
+            benefit="Financial grant of ₹1,00,000 for UPSC/State PSC and ₹50,000 for NEET/JEE qualifiers",
+            official_portal_url="https://ladakh.gov.in",
+            documents=[
+                "Resident Certificate of Ladakh",
+                "ST Certificate of Ladakh",
+                "Preliminary Exam Qualification Admit Card / College Admission Order",
+                "Student Bank Account Passbook"
+            ],
+            rules=[
+                Rule("course_level", "in", ["Class 12", "UG", "PG", "Degree"], "Qualified national competitive exam preliminary stage")
+            ],
+            priority_weight=95
+        ),
+
+        # =========================================================================
+        # 🏖️ PUDUCHERRY (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="py-kamarajar-01",
+            name="Perunthalaivar Kamarajar Financial Assistance Scheme",
+            department="Directorate of Higher & Technical Education, Government of Puducherry",
+            category_type="Education",
+            state="Puducherry",
+            description="Reimburses 100% of college tuition fees for Puducherry resident students selected through CENTAC into professional courses (Engineering, Medical, Nursing).",
+            benefit="100% Tuition Fee Reimbursement for entire duration of professional course",
+            official_portal_url="https://dhte.py.gov.in",
+            documents=[
+                "Puducherry Residence Certificate (Continuous 5 years)",
+                "CENTAC Allotment Order",
+                "Income Certificate (≤ ₹6.0 Lakh/annum for General; no limit for SC/ST)",
+                "Fee Receipt from Professional College"
+            ],
+            rules=[
+                Rule("income", "<=", 600000, "Annual family income does not exceed ₹6 Lakh (waived for SC/ST)"),
+                Rule("course_level", "in", ["UG", "B.Tech", "Engineering", "Medicine", "Degree"], "Enrolled through CENTAC single window counseling")
+            ],
+            priority_weight=96
+        ),
+
+        # =========================================================================
+        # 🏛️ CHANDIGARH (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="ch-merit-01",
+            name="Chandigarh Administration Post-Matric Scholarship Scheme",
+            department="Directorate of Higher Education, Chandigarh Administration",
+            category_type="Education",
+            state="Chandigarh",
+            description="Provides full tuition fee concession and living allowances to SC, OBC, and meritorious students pursuing higher studies in Chandigarh.",
+            benefit="100% Tuition Fee Concession + Monthly Living Maintenance Allowance",
+            official_portal_url="https://chdeducation.gov.in",
+            documents=[
+                "Chandigarh Domicile / Study Certificate",
+                "Caste Certificate (SC/OBC)",
+                "Income Certificate (≤ ₹2.5 Lakh/annum)",
+                "College Admission Receipt and Marksheets"
+            ],
+            rules=[
+                Rule("income", "<=", 250000, "Annual family income within ₹2.5 Lakh ceiling"),
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Degree"], "Enrolled in recognized college in Chandigarh")
+            ],
+            priority_weight=94
+        ),
+
+        # =========================================================================
+        # 🌴 ANDAMAN AND NICOBAR ISLANDS (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="an-highered-01",
+            name="Andaman & Nicobar Higher Education Financial Assistance",
+            department="Directorate of Higher Education, Andaman & Nicobar Administration",
+            category_type="Education",
+            state="Andaman and Nicobar Islands",
+            description="Assists islander students pursuing degree and professional courses in mainland universities with hostel allowance, tuition fee aid, and annual ship airfare.",
+            benefit="Annual Financial Grant of ₹20,000 to ₹50,000 + Subsidized Travel Allowance",
+            official_portal_url="https://andaman.gov.in",
+            documents=[
+                "Local Certificate / Tribal Certificate of Andaman & Nicobar",
+                "Higher Education Admission Letter (Mainland or Island Institute)",
+                "Family Income Certificate (≤ ₹3.0 Lakh/annum)",
+                "Student Bank Account Passbook"
+            ],
+            rules=[
+                Rule("income", "<=", 300000, "Family income does not exceed ₹3 Lakh per annum"),
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Degree"], "Enrolled in recognized higher education")
+            ],
+            priority_weight=94
+        ),
+
+        # =========================================================================
+        # 🏖️ DADRA AND NAGAR HAVELI AND DAMAN AND DIU (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="dd-sadhana-01",
+            name="Saraswati Sadhana & Higher Education Assistance (DNHDD)",
+            department="Department of Higher and Technical Education, Administration of DNH & DD",
+            category_type="Education",
+            state="Dadra and Nagar Haveli and Daman and Diu",
+            description="Provides free bicycles, full tuition fee reimbursement, and book grants to female and tribal students pursuing higher secondary and college education.",
+            benefit="100% Tuition Fee Reimbursement + Annual Book Grant & Free Transport Allowance",
+            official_portal_url="https://daman.nic.in",
+            documents=[
+                "DNH & DD Domicile Certificate",
+                "Caste Certificate (ST/SC/OBC)",
+                "Income Certificate (≤ ₹2.5 Lakh/annum)",
+                "College Bonafide Certificate"
+            ],
+            rules=[
+                Rule("income", "<=", 250000, "Family income does not exceed ₹2.5 Lakh per annum"),
+                Rule("course_level", "in", ["Class 12", "UG", "Diploma", "B.Tech", "Degree"], "Enrolled in college education")
+            ],
+            priority_weight=93
+        ),
+
+        # =========================================================================
+        # 🌊 LAKSHADWEEP (UT) SCHEMES
+        # =========================================================================
+        Scheme(
+            id="ld-scholarship-01",
+            name="Lakshadweep Island Higher Education Scholarship Scheme",
+            department="Department of Education, Administration of UT of Lakshadweep",
+            category_type="Education",
+            state="Lakshadweep",
+            description="Provides 100% full tuition fees, free hostel accommodation, and annual flight/ship transport allowances to native islander students studying in mainland colleges.",
+            benefit="100% Complete College Fees + Monthly Hostel Allowance + Annual Mainland Travel Grant",
+            official_portal_url="https://lakshadweep.gov.in",
+            documents=[
+                "Native Inhabitant of Lakshadweep Certificate",
+                "ST Certificate of Lakshadweep",
+                "Admission Allotment Order in recognized mainland/island college",
+                "Aadhaar-linked Bank Passbook"
+            ],
+            rules=[
+                Rule("course_level", "in", ["UG", "PG", "Diploma", "B.Tech", "Degree", "Medicine"], "Enrolled in recognized higher education course"),
+                Rule("category", "in", ["ST", "General"], "Eligible native islander student")
+            ],
+            priority_weight=95
         )
     ]
     return schemes

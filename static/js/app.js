@@ -1411,7 +1411,26 @@ function getStateBadge(state) {
     "punjab": "🌾",
     "odisha": "🏖️",
     "assam": "🍃",
-    "haryana": "🥛"
+    "haryana": "🥛",
+    "arunachal pradesh": "🌄",
+    "chhattisgarh": "🌾",
+    "goa": "🏖️",
+    "himachal pradesh": "🏔️",
+    "jharkhand": "🌲",
+    "manipur": "🌺",
+    "meghalaya": "☁️",
+    "mizoram": "🌄",
+    "nagaland": "🦅",
+    "sikkim": "🏔️",
+    "tripura": "🌿",
+    "uttarakhand": "⛰️",
+    "jammu and kashmir": "❄️",
+    "ladakh": "🏔️",
+    "puducherry": "🏖️",
+    "chandigarh": "🏛️",
+    "andaman and nicobar islands": "🌴",
+    "dadra and nagar haveli and daman and diu": "🏖️",
+    "lakshadweep": "🌊"
   };
   const icon = icons[norm] || "📍";
   return `<span class="badge badge-info">${icon} ${state}</span>`;
