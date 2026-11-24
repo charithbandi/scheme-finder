@@ -1,7 +1,9 @@
 """
 Official Government Websites & Portals Directory for Scheme Finder.
 Comprehensive database of verified Central and State Government portals
-across Andhra Pradesh, Telangana, Tamil Nadu, and All-India (Central).
+across all Indian States (Andhra Pradesh, Telangana, Tamil Nadu, Karnataka,
+Maharashtra, West Bengal, Uttar Pradesh, Kerala, Bihar, Rajasthan, Gujarat,
+Madhya Pradesh, Delhi, Punjab, Odisha, Assam, Haryana) and Central / Pan-India.
 """
 
 from typing import List, Dict, Any
@@ -9,7 +11,7 @@ from typing import List, Dict, Any
 
 def get_all_portals() -> List[Dict[str, Any]]:
     """
-    Returns verified official government portals covering Central, AP, TS, and TN.
+    Returns verified official government portals covering Central and all Indian states.
     All links point to official .gov.in / .nic.in / state government domains.
     """
     return [
@@ -21,7 +23,7 @@ def get_all_portals() -> List[Dict[str, Any]]:
             "name": "National Scholarship Portal (NSP)",
             "state": "Central",
             "category": "Scholarships & Education",
-            "department": "Ministry of Electronics & Information Technology / Ministry of Education, Govt. of India",
+            "department": "Ministry of Electronics & IT / Ministry of Education, Govt. of India",
             "url": "https://scholarships.gov.in",
             "domain": "scholarships.gov.in",
             "badge": "Central Govt",
@@ -188,25 +190,6 @@ def get_all_portals() -> List[Dict[str, Any]]:
             ],
             "popular": False
         },
-        {
-            "id": "central-csc",
-            "name": "CSC Digital Seva (Common Services Centre)",
-            "state": "Central",
-            "category": "e-Governance & Certificates",
-            "department": "CSC e-Governance Services India Limited, MeitY",
-            "url": "https://digitalseva.csc.gov.in",
-            "domain": "digitalseva.csc.gov.in",
-            "badge": "Digital India",
-            "icon": "🏪",
-            "description": "Pan-India physical service delivery points for citizens in rural and semi-urban areas to apply for government welfare schemes, certificates, and digital services.",
-            "services": [
-                "Assisted Application for Government Schemes & Scholarships",
-                "Aadhaar Update & Ayushman Card Generation",
-                "Panchayat Level Certificates & Land Record Extraction",
-                "Utility bill payments and banking kiosk services"
-            ],
-            "popular": False
-        },
 
         # =========================================================================
         # 🟡 ANDHRA PRADESH STATE GOVERNMENT PORTALS
@@ -227,25 +210,6 @@ def get_all_portals() -> List[Dict[str, Any]]:
                 "Jagananna Vasathi Deevena (MTF - Boarding & Hostel Allowance)",
                 "Post-Matric Scholarship Fresh & Renewal Registrations",
                 "College Biometric Attendance & Disbursal Status Tracking"
-            ],
-            "popular": True
-        },
-        {
-            "id": "ap-navasakam",
-            "name": "Navasakam AP (Welfare Schemes Delivery Portal)",
-            "state": "Andhra Pradesh",
-            "category": "National Gateways",
-            "department": "Department of Gram Volunteers / Ward Volunteers and Village Secretariats, Govt. of AP",
-            "url": "https://navasakam.ap.gov.in",
-            "domain": "navasakam.ap.gov.in",
-            "badge": "Govt of AP",
-            "icon": "📋",
-            "description": "Comprehensive beneficiary identification and service delivery portal coordinating doorstep governance and social audit for all AP Navaratnalu welfare schemes.",
-            "services": [
-                "Beneficiary verification for JVD, Cheyutha, Aasara & Amma Vodi",
-                "Grama / Ward Sachivalayam Social Audit Lists",
-                "Rice Card (Food Security Card) & Pension Eligibility Status",
-                "Grievance redressal (Spandana 1902) integration"
             ],
             "popular": True
         },
@@ -288,59 +252,21 @@ def get_all_portals() -> List[Dict[str, Any]]:
             "popular": True
         },
         {
-            "id": "ap-rythu",
-            "name": "YSR Rythu Bharosa Portal",
+            "id": "ap-navasakam",
+            "name": "Navasakam AP (Welfare Schemes Delivery Portal)",
             "state": "Andhra Pradesh",
-            "category": "Agriculture",
-            "department": "Department of Agriculture & Cooperation, Government of Andhra Pradesh",
-            "url": "https://ysrrythubharosa.ap.gov.in",
-            "domain": "ysrrythubharosa.ap.gov.in",
+            "category": "National Gateways",
+            "department": "Department of Village Secretariats, Govt. of AP",
+            "url": "https://navasakam.ap.gov.in",
+            "domain": "navasakam.ap.gov.in",
             "badge": "Govt of AP",
-            "icon": "🌾",
-            "description": "Andhra Pradesh farmer financial support portal providing ₹13,500/year to landholding and tenant farmers (CCRC holders) in three seasonal installments.",
+            "icon": "📋",
+            "description": "Beneficiary identification and service delivery portal coordinating doorstep governance and social audit for all AP welfare schemes.",
             "services": [
-                "Farmer Payment Status by Aadhaar Number",
-                "e-Crop Booking & Village Social Audit Display",
-                "Tenant Cultivator (CCRC) Registration and Approval",
-                "Free Crop Insurance (YSR Uchitha Vyavasaya Bima) status"
-            ],
-            "popular": False
-        },
-        {
-            "id": "ap-sachivalayam",
-            "name": "AP Grama & Ward Sachivalayam Portal",
-            "state": "Andhra Pradesh",
-            "category": "e-Governance & Certificates",
-            "department": "Village & Ward Secretariats Department, Govt. of Andhra Pradesh",
-            "url": "https://gramawardsachivalayam.ap.gov.in",
-            "domain": "gramawardsachivalayam.ap.gov.in",
-            "badge": "Govt of AP",
-            "icon": "🏛️",
-            "description": "Decentralized grassroots citizen service delivery portal offering 540+ government services through 15,004 Village and Ward Secretariats.",
-            "services": [
-                "Doorstep delivery of 540+ Government Services",
-                "Rice Card, Aarogyasri Card & Pension card application",
-                "Volunteer mapping and doorstep biometric verification",
-                "Track application token status online"
-            ],
-            "popular": False
-        },
-        {
-            "id": "ap-meebhoomi",
-            "name": "MeeBhoomi AP (Digital Land Records)",
-            "state": "Andhra Pradesh",
-            "category": "Identity & Records",
-            "department": "Revenue Department, Government of Andhra Pradesh",
-            "url": "https://meebhoomi.ap.gov.in",
-            "domain": "meebhoomi.ap.gov.in",
-            "badge": "Govt of AP",
-            "icon": "🗺️",
-            "description": "Digital land records registry of Andhra Pradesh for instant verification and download of official Pattadar Passbooks, Adangal (Pahani), and 1-B records.",
-            "services": [
-                "Download Digital 1-B (RoR) Record",
-                "Download Village Adangal / Pahani",
-                "Electronic Pattadar Passbook (e-Passbook) verification",
-                "Aadhaar linking with agricultural survey numbers"
+                "Beneficiary verification for JVD, Cheyutha, Aasara & Amma Vodi",
+                "Grama / Ward Sachivalayam Social Audit Lists",
+                "Rice Card (Food Security Card) & Pension Eligibility Status",
+                "Grievance redressal (Spandana 1902) integration"
             ],
             "popular": False
         },
@@ -388,44 +314,6 @@ def get_all_portals() -> List[Dict[str, Any]]:
             "popular": True
         },
         {
-            "id": "ts-rythubandhu",
-            "name": "Rythu Bandhu & Rythu Bima Portal",
-            "state": "Telangana",
-            "category": "Agriculture",
-            "department": "Department of Agriculture & Cooperation, Government of Telangana",
-            "url": "https://rythubandhu.telangana.gov.in",
-            "domain": "rythubandhu.telangana.gov.in",
-            "badge": "Govt of TS",
-            "icon": "🌾",
-            "description": "Telangana's flagship agricultural investment support portal providing direct transfers of ₹12,000–₹15,000 per acre per year and ₹5 Lakh farmer group life insurance.",
-            "services": [
-                "Farmer Investment Support disbursement status",
-                "Rythu Bima (₹5 Lakh Group Life Insurance) enrollment & claim tracking",
-                "Cheque / Direct Bank Transfer transaction reconciliation",
-                "Agricultural Extension Officer (AEO) cluster contacts"
-            ],
-            "popular": True
-        },
-        {
-            "id": "ts-dharani",
-            "name": "Dharani Portal (Telangana Land Records & Passbook)",
-            "state": "Telangana",
-            "category": "Identity & Records",
-            "department": "Registration & Stamps / Revenue Department, Government of Telangana",
-            "url": "https://dharani.telangana.gov.in",
-            "domain": "dharani.telangana.gov.in",
-            "badge": "Govt of TS",
-            "icon": "🗺️",
-            "description": "Integrated land administration portal providing transparent agricultural land registration, instant mutation, and digital Pattadar Passbook extraction.",
-            "services": [
-                "View Land Details by Survey Number / Khata Number",
-                "Download Digital Pattadar Passbook (Agriculture)",
-                "Cadastral Map & BhuNaksha GIS view",
-                "Online slot booking for land transactions"
-            ],
-            "popular": False
-        },
-        {
             "id": "ts-aarogyasri",
             "name": "Rajiv Aarogyasri Telangana Health Care Trust",
             "state": "Telangana",
@@ -445,40 +333,21 @@ def get_all_portals() -> List[Dict[str, Any]]:
             "popular": True
         },
         {
-            "id": "ts-tappfolio",
-            "name": "T-App Folio (Telangana Mobile & Web Governance)",
+            "id": "ts-rythubandhu",
+            "name": "Rythu Bandhu & Rythu Bima Portal",
             "state": "Telangana",
-            "category": "National Gateways",
-            "department": "Electronic Delivery of Citizen Services (EDCS), Government of Telangana",
-            "url": "https://tappfolio.telangana.gov.in",
-            "domain": "tappfolio.telangana.gov.in",
+            "category": "Agriculture",
+            "department": "Department of Agriculture & Cooperation, Government of Telangana",
+            "url": "https://rythubandhu.telangana.gov.in",
+            "domain": "rythubandhu.telangana.gov.in",
             "badge": "Govt of TS",
-            "icon": "📱",
-            "description": "Telangana's premier m-Governance portal delivering 270+ public services, RTA licenses, bill payments, and educational fee receipts.",
+            "icon": "🌾",
+            "description": "Telangana's agricultural investment support portal providing direct transfers of ₹12,000–₹15,000 per acre per year and ₹5 Lakh farmer group life insurance.",
             "services": [
-                "270+ Government Services through Single Sign-On",
-                "RTA Driving License & Vehicle Registration services",
-                "Utility Bill payments & Municipal tax receipts",
-                "Tahsildar certificate status and downloads"
-            ],
-            "popular": False
-        },
-        {
-            "id": "ts-govportal",
-            "name": "Telangana State Official Portal",
-            "state": "Telangana",
-            "category": "National Gateways",
-            "department": "Information Technology, Electronics & Communications (ITE&C), Govt of Telangana",
-            "url": "https://telangana.gov.in",
-            "domain": "telangana.gov.in",
-            "badge": "Govt of TS",
-            "icon": "🏛️",
-            "description": "Apex government portal providing access to all 33 Telangana district administrations, departments, welfare circulars, and the Mahalakshmi scheme.",
-            "services": [
-                "Mahalakshmi Free Bus Travel & Financial Aid circulars",
-                "Government Orders (GOs) and Gazettes repository",
-                "Telangana State Public Service Commission (TGPSC) links",
-                "District Collectorate contact directory"
+                "Farmer Investment Support disbursement status",
+                "Rythu Bima (₹5 Lakh Group Life Insurance) enrollment & claim tracking",
+                "Cheque / Direct Bank Transfer transaction reconciliation",
+                "Agricultural Extension Officer (AEO) cluster contacts"
             ],
             "popular": False
         },
@@ -563,80 +432,416 @@ def get_all_portals() -> List[Dict[str, Any]]:
             ],
             "popular": True
         },
+
+        # =========================================================================
+        # 🟡 KARNATAKA STATE GOVERNMENT PORTALS
+        # =========================================================================
         {
-            "id": "tn-dote",
-            "name": "Tamil Nadu Directorate of Technical Education (DoTE)",
-            "state": "Tamil Nadu",
-            "category": "Scholarships & Education",
-            "department": "Higher Education Department, Government of Tamil Nadu",
-            "url": "https://www.tndte.gov.in",
-            "domain": "tndte.gov.in",
-            "badge": "Govt of TN",
-            "icon": "🏛️",
-            "description": "Apex technical education directorate overseeing engineering and polytechnic colleges, First Graduate fee concessions, and technical scholarship disbursements in Tamil Nadu.",
+            "id": "ka-sevasindhu",
+            "name": "Seva Sindhu Karnataka (Citizen Services Portal)",
+            "state": "Karnataka",
+            "category": "e-Governance & Certificates",
+            "department": "Department of Personnel and Administrative Reforms (e-Governance), Govt. of Karnataka",
+            "url": "https://sevasindhu.karnataka.gov.in",
+            "domain": "sevasindhu.karnataka.gov.in",
+            "badge": "Govt of KA",
+            "icon": "🟡",
+            "description": "Unified citizen portal delivering 800+ services including Gruha Lakshmi, Yuva Nidhi, Caste & Income certificates, and bus passes in Karnataka.",
             "services": [
-                "First Graduate Tuition Fee Waiver Guidelines & Approvals",
-                "Polytechnic / Diploma Centralized Admissions",
-                "Government and Government-Aided College Fee structures",
-                "Technical Scholarship circulars & notifications"
-            ],
-            "popular": False
-        },
-        {
-            "id": "tn-cmchis",
-            "name": "Chief Minister's Comprehensive Health Insurance (CMCHIS)",
-            "state": "Tamil Nadu",
-            "category": "Healthcare",
-            "department": "Health & Family Welfare Department, Government of Tamil Nadu",
-            "url": "https://www.cmchistn.com",
-            "domain": "cmchistn.com",
-            "badge": "Govt of TN",
-            "icon": "🏥",
-            "description": "Pioneering state health insurance scheme providing cashless hospitalization up to ₹5,00,000 per family per year across 1,090 notified therapy procedures in TN network hospitals.",
-            "services": [
-                "Check Beneficiary Eligibility with Smart Family Card",
-                "Search Empanelled Government and Private Hospitals",
-                "Coverage Package list & Special Surgeries directory",
-                "Download e-Card and 24x7 Emergency Call Center 104"
+                "Gruha Lakshmi (₹2,000/mo) Application & Status",
+                "Yuva Nidhi (Graduate Unemployment Allowance) Registration",
+                "Income & Caste Certificates (Nadakacheri)",
+                "Shakti Scheme Smart Card for free bus travel"
             ],
             "popular": True
         },
         {
-            "id": "tn-bcmbcmw",
-            "name": "Tamil Nadu BC, MBC & MW Welfare (TN ePASS)",
-            "state": "Tamil Nadu",
+            "id": "ka-ssp",
+            "name": "State Scholarship Portal Karnataka (SSP Post-Matric)",
+            "state": "Karnataka",
             "category": "Scholarships & Education",
-            "department": "Backward Classes, Most Backward Classes & Minorities Welfare Dept, Govt of TN",
-            "url": "https://bcmbcmw.tn.gov.in",
-            "domain": "bcmbcmw.tn.gov.in",
-            "badge": "Govt of TN",
-            "icon": "📜",
-            "description": "Post-Matric scholarship and free hostel accommodation management portal for Backward Classes (BC), Most Backward Classes (MBC), and Minorities in Tamil Nadu.",
+            "department": "Centre for e-Governance, Government of Karnataka",
+            "url": "https://ssp.postmatric.karnataka.gov.in",
+            "domain": "ssp.postmatric.karnataka.gov.in",
+            "badge": "Govt of KA",
+            "icon": "🎓",
+            "description": "Centralized scholarship portal for all post-matric students of Karnataka offering complete fee concession, hostel fees, and farmer child scholarships.",
             "services": [
-                "Post-Matric Scholarship for BC / MBC / DNC students",
-                "Free Boarding and Lodging in College Hostels",
-                "Free Bicycles & Free Laptops distribution tracking",
-                "Minority Merit-cum-Means scholarship assistance"
+                "Post-Matric Fee Reimbursement for SC, ST, OBC & Minorities",
+                "Raitha Vidya Nidhi Scholarship for children of farmers",
+                "Hostel E-Attestation and Mess Charges Reimbursement",
+                "Direct Benefit Transfer (DBT) payment status"
             ],
-            "popular": False
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🟠 MAHARASHTRA STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "mh-mahadbt",
+            "name": "MahaDBT (Maharashtra Direct Benefit Transfer Portal)",
+            "state": "Maharashtra",
+            "category": "Scholarships & Education",
+            "department": "Directorate of Higher Education (DHE) & Social Justice Dept, Govt. of Maharashtra",
+            "url": "https://mahadbt.maharashtra.gov.in",
+            "domain": "mahadbt.maharashtra.gov.in",
+            "badge": "Govt of MH",
+            "icon": "🟠",
+            "description": "Unified scholarship and fee reimbursement portal offering Rajarshi Shahu Maharaj fee concessions, post-matric scholarships, and hostels.",
+            "services": [
+                "Rajarshi Chhatrapati Shahu Maharaj Tuition Fee Reimbursement",
+                "Post-Matric Scholarship for SC, ST, VJNT, OBC & SBC",
+                "Dr. Panjabrao Deshmukh Hostel Maintenance Allowance",
+                "DBT Application Tracking & Disbursement Status"
+            ],
+            "popular": True
         },
         {
-            "id": "tn-govportal",
-            "name": "Tamil Nadu Government Official Web Portal",
-            "state": "Tamil Nadu",
-            "category": "National Gateways",
-            "department": "Information & Public Relations / IT Dept, Government of Tamil Nadu",
-            "url": "https://www.tn.gov.in",
-            "domain": "tn.gov.in",
-            "badge": "Govt of TN",
-            "icon": "🏛️",
-            "description": "Official apex web portal of the Government of Tamil Nadu providing access to all 38 district administrations, gazettes, policies, welfare departments, and services.",
+            "id": "mh-aaplesarkar",
+            "name": "Aaple Sarkar (Government of Maharashtra Citizen Portal)",
+            "state": "Maharashtra",
+            "category": "e-Governance & Certificates",
+            "department": "Information Technology Department, Government of Maharashtra",
+            "url": "https://aaplesarkar.mahaonline.gov.in",
+            "domain": "aaplesarkar.mahaonline.gov.in",
+            "badge": "Govt of MH",
+            "icon": "📜",
+            "description": "Maharashtra's right to services portal providing digitally signed Caste, Non-Creamy Layer, Income, and Domicile certificates.",
             "services": [
-                "Directory of all Tamil Nadu Welfare Departments",
-                "Government Orders (GOs) and Policy Notes",
-                "District Collectorate contacts across all 38 districts",
-                "Public Information and Press Releases"
+                "Tahsildar Income Certificate (for fee concessions)",
+                "Caste & Non-Creamy Layer (NCL) Certificate",
+                "Maharashtra Domicile & Nationality Certificate",
+                "7/12 Land Utara and Revenue records"
             ],
-            "popular": False
+            "popular": True
+        },
+        {
+            "id": "mh-ladkibahin",
+            "name": "Majhi Ladki Bahin Yojana Official Portal",
+            "state": "Maharashtra",
+            "category": "Women & Social Welfare",
+            "department": "Women and Child Development Department, Govt. of Maharashtra",
+            "url": "https://ladkibahin.maharashtra.gov.in",
+            "domain": "ladkibahin.maharashtra.gov.in",
+            "badge": "Govt of MH",
+            "icon": "👩",
+            "description": "Official online registration and installment verification portal for the ₹1,500 monthly financial aid scheme for women aged 21-65 in Maharashtra.",
+            "services": [
+                "Online Application for Ladki Bahin Scheme",
+                "Aadhaar-seeded Bank Account Status Check",
+                "Monthly ₹1,500 installment credit tracking",
+                "District level grievance resolution"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🟣 WEST BENGAL STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "wb-svmcm",
+            "name": "Swami Vivekananda Merit-cum-Means Portal (SVMCM)",
+            "state": "West Bengal",
+            "category": "Scholarships & Education",
+            "department": "Higher Education Department, Government of West Bengal",
+            "url": "https://svmcm.wbhed.gov.in",
+            "domain": "svmcm.wbhed.gov.in",
+            "badge": "Govt of WB",
+            "icon": "🟣",
+            "description": "Higher education scholarship portal providing annual grants up to ₹60,000 for meritorious students from low-income families in West Bengal.",
+            "services": [
+                "SVMCM Merit-cum-Means Scholarship application & renewal",
+                "Aikyashree (Minority Scholarship) integration",
+                "Taruner Swapno (Class 12 Tablet Grant) information",
+                "Direct Bank Transfer payment tracking"
+            ],
+            "popular": True
+        },
+        {
+            "id": "wb-kanyashree",
+            "name": "Kanyashree Prakalpa Official Portal",
+            "state": "West Bengal",
+            "category": "Women & Social Welfare",
+            "department": "Women & Child Development and Social Welfare Dept, Govt. of West Bengal",
+            "url": "https://www.wbkanyashree.gov.in",
+            "domain": "wbkanyashree.gov.in",
+            "badge": "Govt of WB",
+            "icon": "👩",
+            "description": "Official portal of the award-winning Kanyashree scheme managing annual scholarship (K1) and ₹25,000 one-time grant (K2) for girl students.",
+            "services": [
+                "K1 Annual Scholarship (₹1,000/yr) tracking",
+                "K2 One-time Grant (₹25,000 at age 18) verification",
+                "Kanyashree ID generation and school transfer",
+                "Grievance and direct benefit credit verification"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🟢 UTTAR PRADESH STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "up-scholarship",
+            "name": "UP Scholarship & Fee Reimbursement Portal (Saksham UP)",
+            "state": "Uttar Pradesh",
+            "category": "Scholarships & Education",
+            "department": "Social Welfare & Backward Classes Welfare Dept, Government of Uttar Pradesh",
+            "url": "https://scholarship.up.gov.in",
+            "domain": "scholarship.up.gov.in",
+            "badge": "Govt of UP",
+            "icon": "🟢",
+            "description": "Centralized scholarship portal for all post-matric and professional college students in UP managing full tuition fee reimbursement.",
+            "services": [
+                "Post-Matric Scholarship for General, SC, ST, OBC & Minorities",
+                "Fee Reimbursement (Shulk Pratipoorti) status check",
+                "PFMS Direct Benefit Transfer tracking",
+                "Institute master verification and attendance monitoring"
+            ],
+            "popular": True
+        },
+        {
+            "id": "up-esathi",
+            "name": "eSathi UP (Citizen Service Portal)",
+            "state": "Uttar Pradesh",
+            "category": "e-Governance & Certificates",
+            "department": "Centre for e-Governance, Government of Uttar Pradesh",
+            "url": "https://esathi.up.gov.in",
+            "domain": "esathi.up.gov.in",
+            "badge": "Govt of UP",
+            "icon": "📜",
+            "description": "Uttar Pradesh government online service portal for instant application and download of digital Tahsildar certificates.",
+            "services": [
+                "Jati Praman Patra (Caste Certificate)",
+                "Aay Praman Patra (Income Certificate)",
+                "Niwas Praman Patra (Domicile / Residence Certificate)",
+                "Khatuni (Land Record) extraction"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🌴 KERALA STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "kl-egrantz",
+            "name": "E-Grantz 3.0 Kerala (Educational Assistance Portal)",
+            "state": "Kerala",
+            "category": "Scholarships & Education",
+            "department": "Scheduled Castes Development & Backward Classes Welfare Dept, Govt. of Kerala",
+            "url": "https://egrantz.kerala.gov.in",
+            "domain": "egrantz.kerala.gov.in",
+            "badge": "Govt of KL",
+            "icon": "🌴",
+            "description": "Unified portal providing complete tuition fee reimbursement and monthly stipends for post-matric students of SC, ST, OEC, and OBC in Kerala.",
+            "services": [
+                "Post-Matric Tuition Fee Reimbursement",
+                "Monthly Pocket Money & Day Scholar Maintenance Allowance",
+                "Hostel Mess & Accommodation Fee Reimbursement",
+                "Akshaya Center assisted registration"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🔷 BIHAR STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "br-serviceplus",
+            "name": "ServicePlus Bihar (RTPS Online Citizen Services)",
+            "state": "Bihar",
+            "category": "e-Governance & Certificates",
+            "department": "General Administration Department, Government of Bihar",
+            "url": "https://serviceonline.bihar.gov.in",
+            "domain": "serviceonline.bihar.gov.in",
+            "badge": "Govt of BR",
+            "icon": "🔷",
+            "description": "Bihar Right to Public Services portal for digital application and certificate download of Caste, Income, and Residential certificates.",
+            "services": [
+                "Jati Praman Patra (Caste Certificate)",
+                "Aay Praman Patra (Income Certificate)",
+                "Awasiya Praman Patra (Residential / Domicile Certificate)",
+                "Non-Creamy Layer (NCL) Certificate for OBC/EBC"
+            ],
+            "popular": True
+        },
+        {
+            "id": "br-medhasoft",
+            "name": "Medhasoft Bihar (Education Department Portal)",
+            "state": "Bihar",
+            "category": "Scholarships & Education",
+            "department": "Education Department, Government of Bihar",
+            "url": "https://medhasoft.bih.nic.in",
+            "domain": "medhasoft.bih.nic.in",
+            "badge": "Govt of BR",
+            "icon": "🎓",
+            "description": "Manages Mukhyamantri Kanya Utthan Yojana (₹50,000 for female graduates), bicycle grants, and school uniform allowances across Bihar.",
+            "services": [
+                "Mukhyamantri Kanya Utthan Yojana (Graduate ₹50,000 Grant)",
+                "Class 10th & 12th Board Merit Protsahan Grants",
+                "Direct Bank Transfer payment status check"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🟤 RAJASTHAN STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "rj-jansoochna",
+            "name": "Jan Soochna Portal Rajasthan (Public Services & Schemes)",
+            "state": "Rajasthan",
+            "category": "National Gateways",
+            "department": "Department of Information Technology & Communication, Govt. of Rajasthan",
+            "url": "https://jansoochna.rajasthan.gov.in",
+            "domain": "jansoochna.rajasthan.gov.in",
+            "badge": "Govt of RJ",
+            "icon": "🟤",
+            "description": "Pioneering public information portal offering transparent details on Chiranjeevi health benefits, social pensions, and Jan Aadhaar cards.",
+            "services": [
+                "Jan Aadhaar Card search & family verification",
+                "Chiranjeevi Health Insurance entitlement status",
+                "Social Security Pension disbursal details",
+                "Ration Card and PDS entitlement lookup"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🦁 GUJARAT STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "gj-digitalgujarat",
+            "name": "Digital Gujarat (Citizen Services & Scholarships)",
+            "state": "Gujarat",
+            "category": "Scholarships & Education",
+            "department": "Science and Technology Department, Government of Gujarat",
+            "url": "https://www.digitalgujarat.gov.in",
+            "domain": "digitalgujarat.gov.in",
+            "badge": "Govt of GJ",
+            "icon": "🦁",
+            "description": "Unified platform for post-matric scholarships, Mukhyamantri Yuva Swavalamban Yojana (MYSY), and revenue certificates in Gujarat.",
+            "services": [
+                "Mukhyamantri Yuva Swavalamban Yojana (MYSY Tuition Grant)",
+                "Post-Matric Scholarships for SC, ST, SEBC & EWS",
+                "Tahsildar Income & Caste Certificates",
+                "Digital locker and e-Seva services"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🐯 MADHYA PRADESH STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "mp-samagra",
+            "name": "Samagra Samajik Suraksha Mission (MP Samagra Portal)",
+            "state": "Madhya Pradesh",
+            "category": "e-Governance & Certificates",
+            "department": "Social Justice & Disabled Persons Welfare Dept, Govt. of Madhya Pradesh",
+            "url": "https://samagra.gov.in",
+            "domain": "samagra.gov.in",
+            "badge": "Govt of MP",
+            "icon": "🐯",
+            "description": "Madhya Pradesh's foundational citizen registry enabling Aadhaar eKYC, Ladli Behna enrollment, and educational fee scholarships.",
+            "services": [
+                "Samagra Family ID & Member ID Search",
+                "Aadhaar e-KYC Verification for Ladli Behna Scheme",
+                "Mukhyamantri Medhavi Chhatra Yojana (MMVY) linkage",
+                "BPL verification and social pensions"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🏛️ DELHI (NCT) GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "dl-edistrict",
+            "name": "e-District Delhi (Citizen Services Portal)",
+            "state": "Delhi",
+            "category": "e-Governance & Certificates",
+            "department": "Revenue Department, Government of NCT of Delhi",
+            "url": "https://edistrict.delhigovt.nic.in",
+            "domain": "edistrict.delhigovt.nic.in",
+            "badge": "Govt of DL",
+            "icon": "🏛️",
+            "description": "Online service portal for Delhi residents to apply for Domicile, SC/ST/OBC certificates, higher education loan guarantee, and Jai Bhim coaching.",
+            "services": [
+                "Delhi Higher Education & Skill Development Guarantee Loan",
+                "Jai Bhim Mukhyamantri Pratibha Vikas Yojana Registration",
+                "Income & Caste Certificates issued by SDM",
+                "Delhi Domicile Certificate"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🌾 PUNJAB STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "pb-scholarship",
+            "name": "Dr. Ambedkar Scholarship Portal Punjab",
+            "state": "Punjab",
+            "category": "Scholarships & Education",
+            "department": "Department of Social Justice, Empowerment and Minorities, Govt. of Punjab",
+            "url": "https://scholarships.punjab.gov.in",
+            "domain": "scholarships.punjab.gov.in",
+            "badge": "Govt of PB",
+            "icon": "🌾",
+            "description": "Centralized scholarship portal managing Post-Matric fee concessions and Ashirwad marriage assistance in Punjab.",
+            "services": [
+                "Post-Matric Scholarship for SC and BC students",
+                "Punjab Ashirwad Scheme (₹51,000 Marriage Grant) tracking",
+                "Free Bus Pass for Students",
+                "Institute registration and verification"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🏖️ ODISHA STATE GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "od-scholarship",
+            "name": "Odisha State Scholarship Portal",
+            "state": "Odisha",
+            "category": "Scholarships & Education",
+            "department": "Electronics & IT Department, Government of Odisha",
+            "url": "https://scholarship.odisha.gov.in",
+            "domain": "scholarship.odisha.gov.in",
+            "badge": "Govt of OD",
+            "icon": "🏖️",
+            "description": "Unified platform managing 25+ scholarship schemes across Higher Education, SC/ST, and Agriculture departments in Odisha.",
+            "services": [
+                "Post-Matric Scholarship for ST/SC/OBC/SEBC/General",
+                "e-Medhabruti (Higher Education Merit Scholarship)",
+                "KALIA Scholarship for children of farmers",
+                "Direct Bank Transfer payment tracking"
+            ],
+            "popular": True
+        },
+
+        # =========================================================================
+        # 🍃 ASSAM & NORTH EAST GOVERNMENT PORTALS
+        # =========================================================================
+        {
+            "id": "as-sewasetu",
+            "name": "Sewa Setu Assam (Right to Public Services Portal)",
+            "state": "Assam",
+            "category": "e-Governance & Certificates",
+            "department": "Administrative Reforms and Training Department, Government of Assam",
+            "url": "https://sewasetu.assam.gov.in",
+            "domain": "sewasetu.assam.gov.in",
+            "badge": "Govt of AS",
+            "icon": "🍃",
+            "description": "Unified citizen portal delivering 500+ services including Orunodoi basic income, Caste & Income certificates, and Pragyan Bharati fee concessions.",
+            "services": [
+                "Orunodoi 2.0 Direct Income Assistance Status",
+                "Permanent Resident Certificate (PRC)",
+                "Income & Caste Certificates",
+                "Pragyan Bharati Higher Education Fee Waiver"
+            ],
+            "popular": True
         }
     ]

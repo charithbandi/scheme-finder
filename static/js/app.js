@@ -351,6 +351,58 @@ const PRESETS = {
     is_govt_school: true,
     is_farmer: false
   },
+  ka_student: {
+    state: "Karnataka",
+    income: 180000,
+    category: "OBC",
+    marks: 84,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: true
+  },
+  mh_student: {
+    state: "Maharashtra",
+    income: 220000,
+    category: "General",
+    marks: 82,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  up_student: {
+    state: "Uttar Pradesh",
+    income: 190000,
+    category: "OBC",
+    marks: 85,
+    gender: "Male",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
+  wb_student: {
+    state: "West Bengal",
+    income: 150000,
+    category: "General",
+    marks: 88,
+    gender: "Female",
+    course_level: "UG",
+    is_first_graduate: false,
+    is_disabled: false,
+    is_single_girl_child: false,
+    is_govt_school: false,
+    is_farmer: false
+  },
   central_scholar: {
     state: "Pan-India",
     income: 250000,
@@ -1285,7 +1337,7 @@ function evaluateLocally(profile) {
     let eligible = true;
     let matchedExplanations = [];
 
-    if (schemeState in { "andhra pradesh": 1, "telangana": 1, "tamil nadu": 1 }) {
+    if (schemeState !== "all india" && schemeState !== "pan-india" && schemeState !== "central") {
       matchedExplanations.push(`Resident of ${scheme.state} (State Welfare Scheme)`);
     }
 
@@ -1339,15 +1391,30 @@ function getPortalDomain(url) {
 // Helper for State Badges
 function getStateBadge(state) {
   const norm = (state || "").toLowerCase().trim();
-  if (norm === "andhra pradesh") {
-    return `<span class="badge badge-ap">🟡 Andhra Pradesh</span>`;
-  } else if (norm === "telangana") {
-    return `<span class="badge badge-ts">🔵 Telangana</span>`;
-  } else if (norm === "tamil nadu") {
-    return `<span class="badge badge-tn">🔴 Tamil Nadu</span>`;
-  } else {
-    return `<span class="badge badge-central">🇮🇳 All-India</span>`;
+  if (norm === "all india" || norm === "pan-india" || norm === "central") {
+    return `<span class="badge badge-central">🇮🇳 Pan-India</span>`;
   }
+  const icons = {
+    "andhra pradesh": "🟡",
+    "telangana": "🔵",
+    "tamil nadu": "🔴",
+    "karnataka": "🟡",
+    "maharashtra": "🟠",
+    "west bengal": "🟣",
+    "uttar pradesh": "🟢",
+    "kerala": "🌴",
+    "bihar": "🔷",
+    "rajasthan": "🟤",
+    "gujarat": "🦁",
+    "madhya pradesh": "🐯",
+    "delhi": "🏛️",
+    "punjab": "🌾",
+    "odisha": "🏖️",
+    "assam": "🍃",
+    "haryana": "🥛"
+  };
+  const icon = icons[norm] || "📍";
+  return `<span class="badge badge-info">${icon} ${state}</span>`;
 }
 
 // -------------------------------------------------------------

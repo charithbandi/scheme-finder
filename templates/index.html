@@ -51,13 +51,13 @@
       <div class="container">
         <!-- State tags row -->
         <div class="hero-state-tags">
-          <span class="hero-state-tag">Andhra Pradesh</span>
+          <span class="hero-state-tag">🇮🇳 Pan-India</span>
           <span class="hero-state-tag sep">•</span>
-          <span class="hero-state-tag">Telangana</span>
+          <span class="hero-state-tag">28 Indian States</span>
           <span class="hero-state-tag sep">•</span>
-          <span class="hero-state-tag">Tamil Nadu</span>
+          <span class="hero-state-tag">8 Union Territories</span>
           <span class="hero-state-tag sep">•</span>
-          <span class="hero-state-tag">Central</span>
+          <span class="hero-state-tag">Central Ministries</span>
         </div>
 
         <h1 class="hero-title">
@@ -69,11 +69,15 @@
 
         <!-- 1-Click Test Presets -->
         <div class="quick-fill-bar">
-          <span class="quick-fill-label">Try a sample profile:</span>
-          <button type="button" class="preset-chip" data-preset="ap_student" id="presetAp">Andhra Pradesh student</button>
-          <button type="button" class="preset-chip" data-preset="ts_student" id="presetTs">Telangana student</button>
-          <button type="button" class="preset-chip" data-preset="tn_student" id="presetTn">Tamil Nadu student</button>
-          <button type="button" class="preset-chip" data-preset="central_scholar" id="presetCentral">Central scholar</button>
+          <span class="quick-fill-label">Try sample profiles:</span>
+          <button type="button" class="preset-chip" data-preset="ap_student" id="presetAp">Andhra Pradesh</button>
+          <button type="button" class="preset-chip" data-preset="ts_student" id="presetTs">Telangana</button>
+          <button type="button" class="preset-chip" data-preset="tn_student" id="presetTn">Tamil Nadu</button>
+          <button type="button" class="preset-chip" data-preset="ka_student" id="presetKa">Karnataka</button>
+          <button type="button" class="preset-chip" data-preset="mh_student" id="presetMh">Maharashtra</button>
+          <button type="button" class="preset-chip" data-preset="up_student" id="presetUp">Uttar Pradesh</button>
+          <button type="button" class="preset-chip" data-preset="wb_student" id="presetWb">West Bengal</button>
+          <button type="button" class="preset-chip" data-preset="central_scholar" id="presetCentral">Central / Pan-India</button>
         </div>
 
         <!-- 1-Click Direct Government Portals Gateway Strip -->
@@ -87,12 +91,14 @@
             <a href="https://telanganaepass.cgg.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="Telangana ePASS Scholarships &amp; Kalyana Lakshmi">🔵 TS ePASS ↗</a>
             <a href="https://jnanabhumi.ap.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="JnanaBhumi Andhra Pradesh Vidya Deevena">🟡 JnanaBhumi AP ↗</a>
             <a href="https://www.tnesevai.tn.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="Tamil Nadu e-Sevai TNeGA Citizen Portal">🔴 TN e-Sevai ↗</a>
-            <a href="https://onlineap.meeseva.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="MeeSeva Andhra Pradesh">📜 AP MeeSeva ↗</a>
-            <a href="https://ts.meeseva.telangana.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="MeeSeva Telangana">📜 TS MeeSeva ↗</a>
+            <a href="https://sevasindhu.karnataka.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="Karnataka Seva Sindhu (Gruha Lakshmi)">🟡 Seva Sindhu KA ↗</a>
+            <a href="https://mahadbt.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="MahaDBT Maharashtra Scholarships">🟠 MahaDBT MH ↗</a>
+            <a href="https://scholarship.up.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="UP Scholarship Portal Saksham UP">🟢 Saksham UP ↗</a>
+            <a href="https://svmcm.wbhed.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="WB Swami Vivekananda Scholarship">🟣 SVMCM WB ↗</a>
             <a href="https://www.digilocker.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="DigiLocker Verified Marksheets &amp; Documents">📁 DigiLocker ↗</a>
             <a href="https://myaadhaar.uidai.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="UIDAI myAadhaar Official Portal">🆔 myAadhaar ↗</a>
             <a href="https://pmkisan.gov.in" target="_blank" rel="noopener noreferrer" class="portal-quick-pill" title="PM-KISAN Samman Nidhi Portal">🌾 PM-KISAN ↗</a>
-            <a href="#portalsSection" class="portal-quick-pill view-all-portals-pill" id="heroViewAllPortalsBtn">View All 25+ Portals ↓</a>
+            <a href="#portalsSection" class="portal-quick-pill view-all-portals-pill" id="heroViewAllPortalsBtn">View All 40+ Portals ↓</a>
           </div>
         </div>
       </div>
@@ -132,13 +138,50 @@
                   <div class="form-group">
                     <label for="stateSelect" class="form-label">
                       State of domicile <span class="req-star">*</span>
-                      <span class="label-hint">Determines state schemes</span>
+                      <span class="label-hint">Determines state &amp; national schemes</span>
                     </label>
                     <select id="stateSelect" name="state" class="input-control" required>
-                      <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
-                      <option value="Telangana">Telangana</option>
-                      <option value="Tamil Nadu">Tamil Nadu</option>
-                      <option value="Pan-India">Other / Pan-India</option>
+                      <option value="Pan-India">🇮🇳 Pan-India (All-India / Central Schemes)</option>
+                      <optgroup label="States">
+                        <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                      </optgroup>
+                      <optgroup label="Union Territories">
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                        <option value="Delhi">Delhi (NCT)</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Ladakh">Ladakh</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Puducherry">Puducherry</option>
+                      </optgroup>
                     </select>
                   </div>
 
@@ -428,11 +471,25 @@
 
         <!-- State tabs -->
         <div class="state-tabs-row" id="stateTabsContainer">
-          <button type="button" class="state-tab-btn active" data-state="All">🌐 All Schemes (23)</button>
+          <button type="button" class="state-tab-btn active" data-state="All">🌐 All Schemes (60)</button>
+          <button type="button" class="state-tab-btn" data-state="All India">🇮🇳 Pan-India / Central (11)</button>
           <button type="button" class="state-tab-btn" data-state="Andhra Pradesh">🟡 Andhra Pradesh (6)</button>
           <button type="button" class="state-tab-btn" data-state="Telangana">🔵 Telangana (6)</button>
           <button type="button" class="state-tab-btn" data-state="Tamil Nadu">🔴 Tamil Nadu (6)</button>
-          <button type="button" class="state-tab-btn" data-state="All India">🇮🇳 Central / All-India (5)</button>
+          <button type="button" class="state-tab-btn" data-state="Karnataka">🟡 Karnataka (4)</button>
+          <button type="button" class="state-tab-btn" data-state="Maharashtra">🟠 Maharashtra (4)</button>
+          <button type="button" class="state-tab-btn" data-state="West Bengal">🟣 West Bengal (4)</button>
+          <button type="button" class="state-tab-btn" data-state="Uttar Pradesh">🟢 Uttar Pradesh (3)</button>
+          <button type="button" class="state-tab-btn" data-state="Kerala">🌴 Kerala (2)</button>
+          <button type="button" class="state-tab-btn" data-state="Bihar">🔷 Bihar (2)</button>
+          <button type="button" class="state-tab-btn" data-state="Rajasthan">🟤 Rajasthan (2)</button>
+          <button type="button" class="state-tab-btn" data-state="Madhya Pradesh">🐯 Madhya Pradesh (2)</button>
+          <button type="button" class="state-tab-btn" data-state="Delhi">🏛️ Delhi (2)</button>
+          <button type="button" class="state-tab-btn" data-state="Odisha">🏖️ Odisha (2)</button>
+          <button type="button" class="state-tab-btn" data-state="Gujarat">🦁 Gujarat (1)</button>
+          <button type="button" class="state-tab-btn" data-state="Punjab">🌾 Punjab (1)</button>
+          <button type="button" class="state-tab-btn" data-state="Assam">🍃 Assam (1)</button>
+          <button type="button" class="state-tab-btn" data-state="Haryana">🥛 Haryana (1)</button>
         </div>
 
         <!-- Search & Category Filter -->
@@ -469,11 +526,24 @@
 
         <!-- State filter tabs for Portals -->
         <div class="state-tabs-row" id="portalStateTabs">
-          <button type="button" class="portal-tab-btn active" data-portal-state="All">🌐 All Government Portals (25)</button>
-          <button type="button" class="portal-tab-btn" data-portal-state="Central">🇮🇳 Central / All-India (10)</button>
-          <button type="button" class="portal-tab-btn" data-portal-state="Andhra Pradesh">🟡 Andhra Pradesh (7)</button>
-          <button type="button" class="portal-tab-btn" data-portal-state="Telangana">🔵 Telangana (7)</button>
-          <button type="button" class="portal-tab-btn" data-portal-state="Tamil Nadu">🔴 Tamil Nadu (8)</button>
+          <button type="button" class="portal-tab-btn active" data-portal-state="All">🌐 All Portals (40)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Central">🇮🇳 Central / Pan-India (9)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Andhra Pradesh">🟡 Andhra Pradesh (4)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Telangana">🔵 Telangana (4)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Tamil Nadu">🔴 Tamil Nadu (4)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Karnataka">🟡 Karnataka (2)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Maharashtra">🟠 Maharashtra (3)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="West Bengal">🟣 West Bengal (2)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Uttar Pradesh">🟢 Uttar Pradesh (2)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Kerala">🌴 Kerala (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Bihar">🔷 Bihar (2)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Rajasthan">🟤 Rajasthan (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Gujarat">🦁 Gujarat (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Madhya Pradesh">🐯 Madhya Pradesh (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Delhi">🏛️ Delhi (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Punjab">🌾 Punjab (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Odisha">🏖️ Odisha (1)</button>
+          <button type="button" class="portal-tab-btn" data-portal-state="Assam">🍃 Assam (1)</button>
         </div>
 
         <!-- Search and Category Filter -->
@@ -511,16 +581,16 @@
           </p>
           <div class="about-grid">
             <div>
-              <div class="about-meta-key">States Covered</div>
-              <div class="about-meta-val">Andhra Pradesh, Telangana, Tamil Nadu &amp; All-India</div>
+              <div class="about-meta-key">States &amp; UTs Covered</div>
+              <div class="about-meta-val">Pan-India · All 28 Indian States &amp; 8 UTs</div>
             </div>
             <div>
               <div class="about-meta-key">Core Engine</div>
               <div class="about-meta-val">Deterministic Boolean Threshold Matcher</div>
             </div>
             <div>
-              <div class="about-meta-key">Key Portals</div>
-              <div class="about-meta-val" style="font-size:0.82rem;">JnanaBhumi AP · TS ePASS · Pudhumai Penn TN · NSP Central</div>
+              <div class="about-meta-key">Total Coverage</div>
+              <div class="about-meta-val" style="font-size:0.82rem;">60+ Welfare Schemes · 40+ Official Govt Portals</div>
             </div>
           </div>
         </div>
@@ -642,10 +712,47 @@
             <div class="settings-field">
               <label class="settings-label" for="settingState">State of Domicile</label>
               <select id="settingState" class="settings-input">
-                <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
-                <option value="Telangana">Telangana</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Pan-India">Other / Pan-India</option>
+                <option value="Pan-India">🇮🇳 Pan-India (All-India / Central Schemes)</option>
+                <optgroup label="States">
+                  <option value="Andhra Pradesh" selected>Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                </optgroup>
+                <optgroup label="Union Territories">
+                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                  <option value="Delhi">Delhi (NCT)</option>
+                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                  <option value="Ladakh">Ladakh</option>
+                  <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Puducherry">Puducherry</option>
+                </optgroup>
               </select>
             </div>
             <div class="settings-field">

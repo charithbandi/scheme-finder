@@ -141,7 +141,7 @@ class Scheme:
 
         matched_explanations = []
         # If state matches a state scheme, record that as an explanation
-        if scheme_state in ["andhra pradesh", "telangana", "tamil nadu"]:
+        if scheme_state not in ["all india", "pan-india", "central"]:
             matched_explanations.append(f"Resident of {self.state} (State Welfare Scheme)")
 
         mandatory_passed = True

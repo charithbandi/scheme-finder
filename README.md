@@ -37,12 +37,12 @@ Instead of navigating fragmented departmental websites and manually reading dens
    - Direct button routing to official government portals (e.g., National Scholarship Portal, AICTE, PM-JAY).
 
 5. **Official Government Websites & Portals Directory:**
-   - Unified directory directly connecting citizens to 25+ verified Central & State government portals (Central, Andhra Pradesh, Telangana, Tamil Nadu).
-   - Instant 1-click access to MeeSeva (AP/TS), Tamil Nadu e-Sevai, TS ePASS, JnanaBhumi, DigiLocker, myAadhaar, PM-KISAN, and National Scholarship Portal (NSP).
+   - Unified directory directly connecting citizens to 40+ verified Central & State government portals across all Indian states (Central, AP, TS, TN, Karnataka, Maharashtra, UP, West Bengal, Kerala, Bihar, Rajasthan, Gujarat, MP, Delhi, Punjab, Odisha, Assam).
+   - Instant 1-click access to MeeSeva, Seva Sindhu, MahaDBT, eSathi UP, SVMCM WB, DigiLocker, myAadhaar, PM-KISAN, and National Scholarship Portal (NSP).
    - Every scheme card features a verified `.gov.in` domain badge and direct external portal routing.
 
-6. **Scheme Directory & Live Search:**
-   - Real-time instant filtering across Central & State schemes by keyword and category (Education, Women Empowerment, Healthcare, Agriculture, Social Welfare).
+6. **All-India & State-Wide Scheme Directory (60+ Schemes):**
+   - Covers Pan-India and all 28 Indian States & 8 Union Territories with real-time instant filtering by state, keyword, and category (Education, Women Empowerment, Healthcare, Agriculture, Social Welfare).
 
 7. **Modern, Responsive Glassmorphic UI:**
    - Dark and Light mode toggle with local storage persistence.
